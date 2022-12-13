@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
+import 'package:js/js.dart';
 
 import 'utils.dart';
 
@@ -28,7 +29,10 @@ const SourceInfo guyaInfo = SourceInfo(
   ],
 );
 
+@JS()
 class Guya extends Source {
+  const Guya(super.cheerio);
+
   @override
   RequestManager get requestManager => RequestManager(requestsPerSecond: 5, requestTimeout: 10000);
 

@@ -2,6 +2,10 @@ import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
 import 'package:js/js.dart';
 
 abstract class Source implements JsSource {
+  const Source(CheerioAPI cheerio);
+
+  CheerioAPI get cheerio => _cheerio;
+
   @override
   RequestManager get requestManager;
 
@@ -57,13 +61,13 @@ abstract class Source implements JsSource {
 
 @JS('Source')
 abstract class JsSource implements Requestable, Searchable {
-  external factory JsSource(CheerioAPI cheerio);
+  external const JsSource(CheerioAPI cheerio);
 
   @override
   external RequestManager get requestManager;
 
-  @JS()
-  external CheerioAPI get cheerio;
+  @JS('cheerio')
+  external CheerioAPI get _cheerio;
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method
   /// to grab and populate a [Chapter] object
