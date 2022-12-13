@@ -1,4 +1,8 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../js.dart';
+import 'request.dart';
+import 'response.dart';
 
 @JS()
 class RequestInterceptor {

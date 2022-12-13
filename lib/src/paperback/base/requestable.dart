@@ -1,4 +1,6 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../models/request_manager.dart';
 
 @JS()
 abstract class Requestable {

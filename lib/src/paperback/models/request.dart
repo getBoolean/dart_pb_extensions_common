@@ -1,4 +1,6 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../js.dart';
 
 @JS('paperback-extensions-common.Request')
 class Request {

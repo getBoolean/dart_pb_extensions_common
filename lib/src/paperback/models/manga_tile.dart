@@ -1,4 +1,4 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
 
 @JS()
 class MangaTile {

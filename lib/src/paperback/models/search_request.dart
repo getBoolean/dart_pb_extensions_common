@@ -1,4 +1,7 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../js.dart';
+import 'tag_section.dart';
 
 /// The [SearchRequest] interface is a list of optional queries, which
 /// can be packed together into a search request.

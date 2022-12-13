@@ -1,4 +1,7 @@
-part of '../../paperback.dart';
+import 'package:js/js.dart';
+
+import 'form.dart';
+import 'form_row.dart';
 
 @JS()
 class NavigationButton extends FormRowTyped<String?> {

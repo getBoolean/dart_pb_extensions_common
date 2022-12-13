@@ -1,4 +1,6 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../paperback.dart';
 
 @JS()
 class HomeSection {

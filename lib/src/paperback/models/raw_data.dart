@@ -1,4 +1,6 @@
-part of '../paperback.dart';
+import 'dart:typed_data';
+
+import 'package:js/js.dart';
 
 @JS('Uint8')
 external String get uint8;

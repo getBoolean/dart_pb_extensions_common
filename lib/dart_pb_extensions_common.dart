@@ -2,8 +2,8 @@
 library dart_pb_extensions_common;
 
 export 'src/utils.dart';
-export 'src/js/js.dart';
-export 'src/paperback/paperback.dart';
+export 'src/js.dart';
+export 'src/paperback.dart';
 
 import 'package:js/js.dart';
 

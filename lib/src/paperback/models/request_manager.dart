@@ -1,4 +1,9 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../js.dart';
+import 'request.dart';
+import 'request_interceptor.dart';
+import 'response.dart';
 
 @JS()
 abstract class RequestManagerInfo {

@@ -1,4 +1,7 @@
-part of '../../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../../js.dart';
+import 'section.dart';
 
 @JS()
 class Form {

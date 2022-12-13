@@ -1,4 +1,7 @@
-part of '../../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../../js.dart';
+import 'form_row.dart';
 
 @JS()
 class OAuthButton extends FormRowTyped<String?> {

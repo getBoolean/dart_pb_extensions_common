@@ -1,4 +1,7 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import 'raw_data.dart';
+import 'request.dart';
 
 @JS('paperback-extensions-common.Response')
 class Response {

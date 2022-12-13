@@ -1,4 +1,4 @@
-part of 'js.dart';
+part of '../js.dart';
 
 /// Creates Dart `Future` which completes when [promise] is resolved or
 /// rejected.

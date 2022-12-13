@@ -1,4 +1,15 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../js.dart';
+import '../models/dynamic_ui/form.dart';
+import '../models/dynamic_ui/section.dart';
+import '../models/paged_results.dart';
+import '../models/request_manager.dart';
+import '../models/search_request.dart';
+import '../models/tracked_manga.dart';
+import '../models/tracker_action_queue.dart';
+import 'requestable.dart';
+import 'searchable.dart';
 
 @JS()
 abstract class Tracker implements Requestable, Searchable {

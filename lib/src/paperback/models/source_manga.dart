@@ -1,4 +1,6 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import 'manga_info.dart';
 
 @JS()
 class SourceManga {

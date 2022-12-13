@@ -1,4 +1,11 @@
-part of '../paperback.dart';
+import 'package:js/js.dart';
+
+import '../../js.dart';
+import '../models/paged_results.dart';
+import '../models/search_field.dart';
+import '../models/search_request.dart';
+import '../models/tag_section.dart';
+import 'requestable.dart';
 
 @JS()
 abstract class Searchable extends Requestable {

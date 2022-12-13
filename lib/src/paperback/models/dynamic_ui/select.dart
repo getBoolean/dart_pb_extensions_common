@@ -1,20 +1,6 @@
-part of '../../paperback.dart';
+import 'package:js/js.dart';
 
-// export interface Select extends FormRowTyped<string[]> {
-//     label: string
-//     options: string[]
-
-//     allowsMultiselect?: boolean
-//     /// If multiselect is allowed, specify the minimum number of selected items required
-//     minimumOptionCount?: number
-
-//     /// Returns the label for the given option
-//     displayLabel: (option: string) => string
-// }
-
-// declare global {
-//     function createSelect(info: Select): Select
-// }
+import 'form_row.dart';
 
 @JS()
 class Select extends FormRowTyped<List<String>> {

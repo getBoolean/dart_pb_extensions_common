@@ -1,4 +1,4 @@
-part of 'js.dart';
+part of '../js.dart';
 
 @JS()
 class CheerioAPI {}
