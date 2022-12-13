@@ -1,39 +1,20 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Paperback Sources (Dart)
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+WARNING: This package is still very experimental and not ready for production use.
+Bugs are expected and the API is subject to change.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Write extensions
 
-## Getting started
+## About Sources
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Sources were a highly requested feature for Paperback as it allows users to read manga that are otherwise not on Paperback (The default source of the app). The sources are community-driven, and may be updated and changed without requiring an application update. This allows for a rolling development process, implementing changes as they come in, rather than waiting for the application developer to implement new sources and bugfixes.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+TODO: Example usage will be provided once the dart cli is implemented.
 
-```dart
-const like = 'sample';
-```
+## Developing A Source
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+To find out more about developing a source, check out the [website](https://paperback.moe/help/contribution/extension-development/), use one of the current implementations in the repo as an example, and/or be sure to ask in the [Discord](https://discord.gg/Ny83JV3)!
