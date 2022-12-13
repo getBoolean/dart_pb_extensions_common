@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:js/js.dart';
 
 part 'js_util.dart';
+part 'cheerio_api.dart';
 
 @JS()
 // ignore: prefer_void_to_null
