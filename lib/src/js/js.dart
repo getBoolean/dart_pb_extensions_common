@@ -32,6 +32,13 @@ abstract class Date {
   external String toISOString();
 }
 
+@JS()
+@anonymous
+class Record<K, V> {
+  external K get first;
+  external V get second;
+}
+
 /// Returns a list of keys in a JavaScript [object].
 ///
 /// This function binds to JavaScript `Object.keys()`.
