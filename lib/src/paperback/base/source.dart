@@ -55,12 +55,15 @@ abstract class Source implements JsSource {
   Promise<bool> Function()? get supportsTagExclusion => null;
 }
 
-@JS()
+@JS('Source')
 abstract class JsSource implements Requestable, Searchable {
+  external factory JsSource(CheerioAPI cheerio);
+
   @override
   external RequestManager get requestManager;
 
-  external factory JsSource(CheerioAPI cheerio);
+  @JS()
+  external CheerioAPI get cheerio;
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method
   /// to grab and populate a [Chapter] object

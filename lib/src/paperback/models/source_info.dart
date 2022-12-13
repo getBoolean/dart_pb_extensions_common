@@ -54,13 +54,13 @@ class SourceInfo {
   /// under your repositories section
   external List<SourceTag>? get sourceTags;
 
-  external factory SourceInfo({
+  external const factory SourceInfo({
     required String version,
     required String name,
     required String icon,
     required String author,
     required String description,
-    required String contentRating,
+    required ContentRating contentRating,
     required String websiteBaseURL,
     String? authorWebsite,
     String? language,

@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
 
+import 'utils.dart';
+
 void main() {
   functionName();
 }
@@ -9,28 +11,22 @@ void main() {
 const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
 
-final SourceInfo guyaInfo = SourceInfo(
+const SourceInfo guyaInfo = SourceInfo(
   version: '2.0.0',
   name: 'Guya (Dart)',
   icon: 'icon.png',
   author: 'getBoolean',
   authorWebsite: 'https://github.com/getBoolean',
   description: 'Extension that pulls manga from Guya.moe.',
-  contentRating: ContentRating.everyone.value,
+  contentRating: ContentRating.everyone,
   websiteBaseURL: kGuyaDomain,
   sourceTags: [
     SourceTag(
       text: 'Notifications',
-      type: TagType.green.value,
+      type: TagType.green,
     ),
   ],
 );
-
-T? asType<T>(Object? value) => value is T ? value : null;
-
-extension ListUtils on List {
-  List<V> removeNull<V>() => whereType<V>().toList();
-}
 
 class Guya extends Source {
   @override
@@ -48,7 +44,7 @@ class Guya extends Source {
       if (data! is Map<String, Object?>) {
         throw JsError('Invalid response data: $responseData');
       }
-      
+
       final series = asType<String>(data['series']);
       final altTitles = asType<List>(data['alt_titles']) ?? [];
       final List<String> titles = [series, ...altTitles].removeNull();
@@ -74,6 +70,7 @@ class Guya extends Source {
 
   @override
   Promise<List<Chapter>> getChapters(String mangaId) {
+    final $ = cheerio.load('');
     // TODO: implement getChapters
     throw UnimplementedError();
   }
