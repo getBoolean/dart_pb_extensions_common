@@ -22,3 +22,4 @@ part 'models/source_tag.dart';
 part 'models/source_state_manager.dart';
 part 'models/source_info.dart';
 part 'models/search_request.dart';
+part 'models/search_field.dart';
