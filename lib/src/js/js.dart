@@ -11,7 +11,7 @@ part 'js_util.dart';
 external Null get undefined;
 
 @JS()
-abstract class Promise<T> {
+class Promise<T> {
   external factory Promise(
     Function(dynamic Function(dynamic value) resolve, dynamic Function(dynamic error) reject)
         executor,
@@ -21,8 +21,10 @@ abstract class Promise<T> {
     dynamic Function(dynamic value)? onFulfilled, [
     dynamic Function(dynamic error) onRejected,
   ]);
+}
 
-  toFuture() => promiseToFuture<T>(this);
+extension PromiseToFutureExtension<T> on Promise<T> {
+  Future<T> toFuture() => promiseToFuture<T>(this);
 }
 
 @JS()
