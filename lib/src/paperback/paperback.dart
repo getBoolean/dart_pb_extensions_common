@@ -14,3 +14,4 @@ part 'models/source_manga.dart';
 part 'models/manga_tile.dart';
 part 'models/home_section.dart';
 part 'models/manga_updates.dart';
+part 'models/paged_results.dart';
