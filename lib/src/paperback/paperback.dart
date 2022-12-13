@@ -28,3 +28,5 @@ part 'models/search_field.dart';
 part 'models/response.dart';
 part 'models/raw_data.dart';
 part 'models/request.dart';
+part 'models/request_manager.dart';
+part 'models/request_interceptor.dart';

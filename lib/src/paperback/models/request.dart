@@ -1,6 +1,6 @@
 part of '../paperback.dart';
 
-@JS()
+@JS('paperback-extensions-common.Request')
 class Request {
   /// The URL which this HTTP request should be delivered to
   external String get url;

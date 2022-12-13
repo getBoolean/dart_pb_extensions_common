@@ -3,6 +3,7 @@ part of '../paperback.dart';
 @JS('Uint8')
 external String get uint8;
 
+@JS()
 typedef ByteArray = Uint8List;
 
 @JS()

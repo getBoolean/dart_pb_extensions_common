@@ -1,6 +1,6 @@
 part of '../paperback.dart';
 
-@JS()
+@JS('paperback-extensions-common.Response')
 class Response {
   external RawData get rawData;
 
