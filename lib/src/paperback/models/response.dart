@@ -8,7 +8,7 @@ class Response {
   external RawData get rawData;
 
   /// The response which was provided from the server
-  external String get data;
+  external Object? get data;
 
   /// The HTTP status code from the server response
   external num get status;

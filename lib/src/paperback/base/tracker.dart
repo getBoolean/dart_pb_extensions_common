@@ -21,18 +21,22 @@ abstract class Tracker implements Requestable, Searchable {
   external factory Tracker(CheerioAPI cheerio);
 
   @override
-  external Promise<PagedResults> Function(SearchRequest query, Object? metadata)
-      get getSearchResults;
+  @JS()
+  external Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
 
   /// This cannot be async since the app expects a form as soon as this function is called
   /// for async tasks handle them in `sections`.
-  external Promise<Form> Function(String mangaId) get getMangaForm;
+  @JS()
+  external Promise<Form> getMangaForm(String mangaId);
 
-  external Promise<TrackedManga> Function(String mangaId) get getTrackedManga;
-  external Promise<Section> Function() get getSourceMenu;
+  @JS()
+  external Promise<TrackedManga> getTrackedManga(String mangaId);
+  @JS()
+  external Promise<Section> getSourceMenu();
 
   /// This method MUST dequeue all actions and process them, any unsuccessful actions
   /// must be marked for retry instead of being left in the queue.
   /// NOTE: Retried actions older than 24 hours will be discarded
-  external Promise<void> Function(TrackerActionQueue actionQueue) get processActionQueue;
+  @JS()
+  external Promise<void> processActionQueue(TrackerActionQueue actionQueue);
 }

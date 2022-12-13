@@ -5,11 +5,14 @@ import 'dart:async';
 import 'package:js/js.dart';
 
 part 'js/js_util.dart';
-part 'js/cheerio_api.dart';
+part 'js/cheerio.dart';
 
 @JS()
 // ignore: prefer_void_to_null
 external Null get undefined;
+
+@JS('JSON.parse')
+external dynamic parseJson(String json);
 
 @JS()
 class Promise<T> {
@@ -26,7 +29,7 @@ class Promise<T> {
     void Function(dynamic error) onRejected,
   ]);
 
-  factory Promise.of(Future<T> future) => futureToPromise(future);
+  factory Promise.of(FutureOr<T> future) => futureToPromise(Future.value(future));
 }
 
 extension PromiseToFutureExtension<T> on Promise<T> {

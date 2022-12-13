@@ -22,7 +22,7 @@ class HomeSection {
   external List<MangaTile>? get items;
 
   /// Should you be able to scroll, and view more manga on this section?
-  /// This method, when true, triggers the [Source.getViewMoreRequest] method
+  /// This method, when true, triggers the [JsSource.getViewMoreRequest] method
   /// when the user tries to scroll further on the HomePage section. This usually means
   /// that it will traverse to another page, and render more information
   @JS('view_more')

@@ -3,6 +3,7 @@ import 'package:js/js.dart';
 import 'source_tag.dart';
 
 @JS()
+@anonymous
 class SourceInfo {
   /// Required class variable which denotes the current version of the application.
   /// This is what the application uses to determine whether it needs to update it's local
@@ -52,6 +53,19 @@ class SourceInfo {
   /// An optional field of source tags: Little bits of metadata which is rendered on the website
   /// under your repositories section
   external List<SourceTag>? get sourceTags;
+
+  external factory SourceInfo({
+    required String version,
+    required String name,
+    required String icon,
+    required String author,
+    required String description,
+    required String contentRating,
+    required String websiteBaseURL,
+    String? authorWebsite,
+    String? language,
+    List<SourceTag>? sourceTags,
+  });
 }
 
 /// A content rating to be attributed to each source.
@@ -60,10 +74,10 @@ enum ContentRating {
   mature("MATURE"),
   adult("ADULT");
 
-  final String _value;
+  final String value;
 
-  const ContentRating(this._value);
+  const ContentRating(this.value);
 
   @override
-  String toString() => _value;
+  String toString() => value;
 }

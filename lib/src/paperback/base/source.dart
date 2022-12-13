@@ -1,33 +1,90 @@
 import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
 import 'package:js/js.dart';
 
+abstract class Source implements JsSource {
+  @override
+  RequestManager get requestManager;
+
+  @override
+  Promise<MangaInfo> getMangaDetails(String mangaId);
+
+  @override
+  Promise<List<Chapter>> getChapters(String mangaId);
+
+  @override
+  Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId);
+
+  @override
+  Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
+
+  // <-----------        OPTIONAL METHODS        -----------> //
+
+  @override
+  Promise<void>? filterUpdatedManga(
+          void Function(MangaUpdates updates) updates, Date time, List<String> ids) =>
+      null;
+
+  @override
+  Request? getCloudflareBypassRequest() => null;
+
+  @override
+  Promise<void>? getHomePageSections(void Function(HomeSection section) sectionCallback) => null;
+
+  @override
+  String? getMangaShareUrl(String mangaId) => null;
+
+  @override
+  Promise<List<SearchField>>? getSearchFields() => null;
+
+  @override
+  Promise<List<TagSection>>? getSearchTags() => null;
+
+  @override
+  Promise<Section>? getSourceMenu() => null;
+
+  @override
+  Promise<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata) => null;
+
+  @override
+  Promise<PagedResults>? getWebsiteMangaDirectory(Object? metadata) => null;
+
+  @override
+  Promise<bool> Function()? get supportsSearchOperators => null;
+
+  @override
+  Promise<bool> Function()? get supportsTagExclusion => null;
+}
+
 @JS()
-abstract class Source implements Requestable, Searchable {
+abstract class JsSource implements Requestable, Searchable {
   @override
   external RequestManager get requestManager;
 
-  external factory Source(CheerioAPI cheerio);
+  external factory JsSource(CheerioAPI cheerio);
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method
   /// to grab and populate a [Chapter] object
   ///
   /// Arguments:
   /// - [mangaId]: The ID which this function is expected to grab data for
-  external Promise<MangaInfo> Function(String mangaId) get getMangaDetails;
+  @JS()
+  external Promise<MangaInfo> getMangaDetails(String mangaId);
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method
   /// to grab and populate a [Chapter] array.
   ///
   /// Arguments:
   /// - [mangaId]: The ID which this function is expected to grab data for
-  external Promise<List<Chapter>> Function(String mangaId) get getChapters;
+  @JS()
+  external Promise<List<Chapter>> getChapters(String mangaId);
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method
   /// to grab and populate a [ChapterDetails] object.
   ///
   /// Arguments:
   /// - [mangaId]: The ID which this function is expected to grab data for
-  external Promise<ChapterDetails> Function(String mangaId, String chapterId) get getChapterDetails;
+  @JS()
+  external Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId);
 
   /// Given a search request, this function should scan through the website's search page and
   /// return relevent [MangaTile] objects to the given search parameters.
@@ -39,21 +96,23 @@ abstract class Source implements Requestable, Searchable {
   /// - [query]: A app-filled query which the search request should request from the website.
   /// - [metadata]: A persistant metadata parameter which can be filled out with any data required between search page sections
   @override
-  external Promise<PagedResults> Function(SearchRequest query, Object? metadata)
-      get getSearchResults;
+  @JS()
+  external Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
 
   // <-----------        OPTIONAL METHODS        -----------> //
 
   @override
-  external Promise<List<SearchField>> Function()? get getSearchFields;
+  @JS()
+  external Promise<List<SearchField>>? getSearchFields();
 
   /// (OPTIONAL METHOD) A function which communicates with a given source, and returns a list of all possible tags which the source supports.
   /// These tags are generic and depend on the source. They could be genres such as 'Isekai, Action, Drama', or they can be
   /// listings such as 'Completed, Ongoing'
   ///
-  /// These tags must be tags which can be used in the [Source.getSearchResults] function to augment the searching capability of the application
+  /// These tags must be tags which can be used in the [JsSource.getSearchResults] function to augment the searching capability of the application
   @override
-  external Promise<List<TagSection>> Function()? get getSearchTags;
+  @JS()
+  external Promise<List<TagSection>>? getSearchTags();
 
   @override
   external Promise<bool> Function()? get supportsTagExclusion;
@@ -64,17 +123,20 @@ abstract class Source implements Requestable, Searchable {
   /// A stateful source may require user input.
   /// By supplying this value to the Source, the app will render your form to the user
   /// in the application settings.
-  external Promise<Section> Function()? get getSourceMenu;
+  @JS()
+  external Promise<Section>? getSourceMenu();
 
   /// (OPTIONAL METHOD) Given a manga ID, return a URL which Safari can open in a browser to display.
-  external String Function(String mangaId)? get getMangaShareUrl;
+  @JS()
+  external String? getMangaShareUrl(String mangaId);
 
   /// If a source is secured by Cloudflare, this method should be filled out.
   /// By returning a request to the website, this source will attempt to create a session
   /// so that the source can load correctly.
   ///
   /// Usually the [Request] url can simply be the base URL to the source.
-  external Request Function()? get getCloudflareBypassRequest;
+  @JS()
+  external Request? getCloudflareBypassRequest();
 
   /// (OPTIONAL METHOD) A function which should scan through the latest updates section of a website, and report back with a list of IDs which have been
   /// updated BEFORE the supplied timeframe.
@@ -88,11 +150,12 @@ abstract class Source implements Requestable, Searchable {
   /// - [mangaUpdatesFoundCallback]: A callback which is used to report a list of manga IDs back to the API
   /// - [time]: This function should find all manga which has been updated between the current time, and this parameter's reported time.
   ///           After this time has been passed, the system should stop parsing and return
-  external Promise<void> Function(
+  @JS()
+  external Promise<void>? filterUpdatedManga(
     void Function(MangaUpdates updates) updates,
     Date time,
     List<String> ids,
-  )? get filterUpdatedManga;
+  );
 
   /// (OPTIONAL METHOD) A function which should readonly all of the available homepage sections for a given source, and return a [HomeSection] object.
   /// The sectionCallback is to be used for each given section on the website. This may include a 'Latest Updates' section, or a 'Hot Manga' section.
@@ -102,8 +165,8 @@ abstract class Source implements Requestable, Searchable {
   ///
   /// Arguments:
   /// - [sectionCallback]: A callback which is run for each independant [HomeSection].
-  external Promise<void> Function(void Function(HomeSection section) sectionCallback)?
-      get getHomePageSections;
+  @JS()
+  external Promise<void>? getHomePageSections(void Function(HomeSection section) sectionCallback);
 
   /// (OPTIONAL METHOD) This function will take a given homepageSectionId and metadata value, and with this information, should return
   /// all of the manga tiles supplied for the given state of parameters. Most commonly, the metadata value will contain some sort of page information,
@@ -111,12 +174,12 @@ abstract class Source implements Requestable, Searchable {
   ///
   /// Arguments:
   /// - [homepageSectionId]: The given ID to the homepage defined in [getHomePageSections] which this method is to readonly more data about
-  /// - [metadata]: This is a metadata parameter which is filled our in the [Source.getHomePageSections]'s return
+  /// - [metadata]: This is a metadata parameter which is filled our in the [JsSource.getHomePageSections]'s return
   /// function. It initially starts out as null. Afterwards, if the metadata value returned in the [PagedResults] has been modified,
-  /// the modified version will be supplied to this function instead of the origional [Source.getHomePageSections]'s version.
+  /// the modified version will be supplied to this function instead of the origional [JsSource.getHomePageSections]'s version.
   /// This is useful for keeping track of which page a user is on, pagnating to other pages as ViewMore is called multiple times.
-  external Promise<PagedResults> Function(String homepageSectionId, Object? metadata)?
-      get getViewMoreItems;
+  @JS()
+  external Promise<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata);
 
   /// (OPTIONAL METHOD) This function is to return the entire library of a manga website, page by page.
   /// If there is an additional page which needs to be called, the [PagedResults] value should have it's metadata filled out
@@ -127,7 +190,8 @@ abstract class Source implements Requestable, Searchable {
   /// Arguments:
   /// - [metadata]: Identifying information as to what the source needs to call in order to readonly theext batch of data
   /// of the directory. Usually this is a page counter.
-  external Promise<PagedResults> Function(Object? metadata)? get getWebsiteMangaDirectory;
+  @JS()
+  external Promise<PagedResults>? getWebsiteMangaDirectory(Object? metadata);
 }
 
 /// Many sites use '[x] time ago' - Figured it would be good to handle these cases in general

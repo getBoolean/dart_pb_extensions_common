@@ -5,6 +5,8 @@ import '../../paperback.dart';
 
 @JS('Manga')
 class MangaInfo {
+  external String get id;
+
   /// A list of titles which this Manga is called.
   /// There may be secondary titles, which can be pushed to this variable
   external List<String> get titles;
@@ -60,7 +62,7 @@ class MangaInfo {
   external List<String>? get relatedIds;
 
   /// The time which this manga has been updated last
-  external Date get lastUpdate;
+  external Date? get lastUpdate;
 
   /// Create a new MangaInfo object
   ///
@@ -89,6 +91,7 @@ class MangaInfo {
   /// this should hold
   /// - [lastUpdate]: The time which this manga has been updated last
   factory MangaInfo({
+    required String id,
     required List<String> titles,
     required String image,
     num? rating,
@@ -103,9 +106,10 @@ class MangaInfo {
     num? views,
     bool? hentai,
     List<String>? relatedIds,
-    required Date lastUpdate,
+    Date? lastUpdate,
   }) =>
       _createMangaInfo(_CreateMangaInfoOptions(
+        id: id,
         titles: titles,
         image: image,
         rating: rating,
@@ -156,9 +160,10 @@ class _CreateMangaInfoOptions {
   external num? views;
   external bool? get hentai;
   external List<String>? get relatedIds;
-  external Date get lastUpdate;
+  external Date? get lastUpdate;
 
   external factory _CreateMangaInfoOptions({
+    required String id,
     required List<String> titles,
     required String image,
     num? rating,
@@ -173,7 +178,7 @@ class _CreateMangaInfoOptions {
     num? views,
     bool? hentai,
     List<String>? relatedIds,
-    required Date lastUpdate,
+    Date? lastUpdate,
   });
 }
 

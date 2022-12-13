@@ -9,13 +9,17 @@ import 'requestable.dart';
 
 @JS()
 abstract class Searchable extends Requestable {
-  external Promise<PagedResults> Function(
+  @JS()
+  external Promise<PagedResults> getSearchResults(
     SearchRequest query,
     Object? metadata,
-  ) get getSearchResults;
+  );
 
-  external Promise<List<TagSection>> Function()? get getSearchTags;
-  external Promise<List<SearchField>> Function()? get getSearchFields;
+  @JS()
+  external Promise<List<TagSection>>? getSearchTags();
+
+  @JS()
+  external Promise<List<SearchField>>? getSearchFields();
 
   external Promise<bool> Function()? get supportsTagExclusion;
   external Promise<bool> Function()? get supportsSearchOperators;

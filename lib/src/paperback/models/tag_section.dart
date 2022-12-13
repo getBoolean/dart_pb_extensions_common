@@ -1,6 +1,7 @@
 import 'package:js/js.dart';
 
 @JS()
+@anonymous
 class Tag {
   /// An internal identifier of this tag
   external String get id;
@@ -8,6 +9,8 @@ class Tag {
   /// A user-presentable representation of how people read the tag. This
   /// may be the same as [Tag.id]
   external String get label;
+
+  external factory Tag({required String id, required String label});
 }
 
 /// A category of tags

@@ -14,31 +14,31 @@ import 'models/tag_section.dart';
 
 @JS()
 class APIWrapper {
-  external Promise<MangaInfo> getMangaDetails(Source source, String mangaId);
+  external Promise<MangaInfo> getMangaDetails(JsSource source, String mangaId);
 
-  external Promise<List<Chapter>> getChapters(Source source, String mangaId);
+  external Promise<List<Chapter>> getChapters(JsSource source, String mangaId);
 
   external Promise<ChapterDetails> getChapterDetails(
-    Source source,
+    JsSource source,
     String mangaId,
     String chapterId,
   );
 
   external Promise<PagedResults> searchRequest(
-    Source source,
+    JsSource source,
     SearchRequest query,
     Object? metadata,
   );
 
-  external Promise<List<TagSection>?> getTags(Source source);
+  external Promise<List<TagSection>?> getTags(JsSource source);
 
   external Promise<List<MangaUpdates>> filterUpdatedManga(
-    Source source,
+    JsSource source,
     Date time,
     List<String> ids,
   );
 
-  external Promise<List<HomeSection>> getHomePageSections(Source source);
+  external Promise<List<HomeSection>> getHomePageSections(JsSource source);
 
   /// Performs a 'get more' request. Usually this is done when a homesection has it's 'View More' button tapped, and the user
   /// is starting to scroll through all of the available titles in each section.
@@ -52,11 +52,11 @@ class APIWrapper {
   /// - [resultPageLimiter] How many pages this should attempt to iterate through at most. This prevents
   /// you from being in an infinite loop. Defaults to 3.
   external Promise<List<MangaTile>?> getViewMoreItems(
-    Source source,
+    JsSource source,
     String homepageSectionId,
     Object? metadata, [
     int resultPageLimiter = 3,
   ]);
 
-  external Promise<PagedResults?> getWebsiteMangaDirectory(Source source, Object? metadata);
+  external Promise<PagedResults?> getWebsiteMangaDirectory(JsSource source, Object? metadata);
 }
