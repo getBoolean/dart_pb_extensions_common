@@ -14,14 +14,19 @@ external Null get undefined;
 @JS()
 class Promise<T> {
   external factory Promise(
-    Function(dynamic Function(dynamic value) resolve, dynamic Function(dynamic error) reject)
+    void Function(
+      dynamic Function(dynamic value) resolve,
+      dynamic Function(dynamic error) reject,
+    )
         executor,
   );
 
   external Promise then(
-    dynamic Function(dynamic value)? onFulfilled, [
-    dynamic Function(dynamic error) onRejected,
+    void Function(dynamic value)? onFulfilled, [
+    void Function(dynamic error) onRejected,
   ]);
+
+  factory Promise.of(Future<T> future) => futureToPromise(future);
 }
 
 extension PromiseToFutureExtension<T> on Promise<T> {

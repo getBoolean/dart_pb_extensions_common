@@ -44,3 +44,5 @@ export 'paperback/base/requestable.dart';
 export 'paperback/base/searchable.dart';
 export 'paperback/base/tracker.dart';
 export 'paperback/base/source.dart';
+
+export 'paperback/api_wrapper.dart';

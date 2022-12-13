@@ -15,7 +15,7 @@ Future<T> promiseToFuture<T>(Promise<T> promise) {
   return completer.future;
 }
 
-/// Creates JS `Promise` which is resolved when [future] completes.
+/// Creates JS [Promise] which is resolved when [future] completes.
 ///
 /// See also:
 /// - [promiseToFuture]
