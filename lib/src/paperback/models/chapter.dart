@@ -30,8 +30,8 @@ class Chapter {
   /// A grouping of chapters that this belongs to
   external String get group;
 
-  /// The [JSDate] in which this chapter was released
-  external JSDate get time;
+  /// The [Date] in which this chapter was released
+  external Date get time;
 
   /// Creates a new chapter
   ///
@@ -57,7 +57,7 @@ class Chapter {
     required String name,
     required num volume,
     required String group,
-    required JSDate time,
+    required Date time,
   }) =>
       _createChapter(_CreateChapterOptions(
         id: id,
@@ -81,7 +81,7 @@ class _CreateChapterOptions {
   external String get name;
   external num get volume;
   external String get group;
-  external JSDate get time;
+  external Date get time;
 
   external factory _CreateChapterOptions({
     String id,
@@ -91,7 +91,7 @@ class _CreateChapterOptions {
     String name,
     num volume,
     String group,
-    JSDate time,
+    Date time,
   });
 }
 

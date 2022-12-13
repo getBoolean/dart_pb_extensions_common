@@ -57,10 +57,10 @@ class MangaInfo {
   external List<String>? get relatedIds;
 
   /// The time which this manga has been updated last
-  external JSDate get lastUpdate;
+  external Date get lastUpdate;
 
   /// Create a new MangaInfo object
-  /// 
+  ///
   /// Arguments:
   /// - [titles]: A list of titles which this Manga is called.
   /// There may be secondary titles, which can be pushed to this variable
@@ -100,7 +100,7 @@ class MangaInfo {
     num? views,
     bool? hentai,
     List<String>? relatedIds,
-    required JSDate lastUpdate,
+    required Date lastUpdate,
   }) =>
       _createMangaInfo(_CreateMangaInfoOptions(
         titles: titles,
@@ -153,7 +153,7 @@ class _CreateMangaInfoOptions {
   external num? views;
   external bool? get hentai;
   external List<String>? get relatedIds;
-  external JSDate get lastUpdate;
+  external Date get lastUpdate;
 
   external factory _CreateMangaInfoOptions({
     required List<String> titles,
@@ -170,7 +170,7 @@ class _CreateMangaInfoOptions {
     num? views,
     bool? hentai,
     List<String>? relatedIds,
-    required JSDate lastUpdate,
+    required Date lastUpdate,
   });
 }
 

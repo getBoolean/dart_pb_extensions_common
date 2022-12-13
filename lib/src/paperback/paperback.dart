@@ -16,3 +16,5 @@ part 'models/home_section.dart';
 part 'models/manga_updates.dart';
 part 'models/paged_results.dart';
 part 'models/tracked_manga.dart';
+part 'models/tracked_manga_chapter_read_action.dart';
+part 'models/tracker_action_queue.dart';
