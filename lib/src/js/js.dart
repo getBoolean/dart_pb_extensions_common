@@ -96,3 +96,9 @@ abstract class Atomics {
   @JS('xor')
   external static int xor(List<int> typedArray, int index, int value);
 }
+
+@JS()
+class TypedArray {
+  external factory TypedArray();
+  external num get length;
+}

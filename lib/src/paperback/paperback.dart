@@ -1,5 +1,7 @@
 library dart_pb_extensions_common.paperback;
 
+import 'dart:typed_data';
+
 import 'package:js/js.dart';
 
 import '../js/js.dart';
@@ -23,3 +25,6 @@ part 'models/source_state_manager.dart';
 part 'models/source_info.dart';
 part 'models/search_request.dart';
 part 'models/search_field.dart';
+part 'models/response.dart';
+part 'models/raw_data.dart';
+part 'models/request.dart';
