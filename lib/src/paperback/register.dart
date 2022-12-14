@@ -3,6 +3,11 @@ import 'dart:js';
 import 'base/source.dart';
 import 'models/source_info.dart';
 
+// Solution to allowing interop with class methods
+// https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
+
+/// Registers a [Source] with the window so that it can be used by the
+/// Paperback app.
 void Function() registerSource(Source source) {
   return allowInterop(
     () => JsObject.jsify({
@@ -25,6 +30,8 @@ void Function() registerSource(Source source) {
   );
 }
 
+/// Registers a [SourceInfo] with the global [context] so that it can be used by
+/// the Paperback app.
 void registerSourceInfo(Map<String, SourceInfo> sourceInfo) {
   for (final entry in sourceInfo.entries) {
     context[entry.key] = entry.value.toJsMap();
