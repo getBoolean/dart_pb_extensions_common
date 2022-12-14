@@ -9,6 +9,7 @@ I may revisit this in the future. The following major tasks are still needed to 
 - [ ] Allow certain class methods to interop with JavaScript via `allowInterop` (This is where I am stuck,
 I am not sure how to do this for class methods. I need to investigate how paperback consumes the sources.)
 - [ ] Dart CLI for Bundle and Serve
+- [ ] Provide a way to register SourceInfo with CLI
 - [ ] Testing
 - [ ] Documentation
 - [ ] Template repository
