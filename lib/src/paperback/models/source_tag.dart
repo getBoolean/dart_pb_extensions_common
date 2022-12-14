@@ -2,7 +2,7 @@ import 'package:dart_pb_extensions_common/js.dart';
 import 'package:js/js.dart';
 
 class SourceTag {
-  late final JsSourceTag jsService;
+  late final JsSourceTag jsSourceTag;
   final String text;
 
   /// An enumerator which [SourceTag] uses to define the color of the tag rendered on the website.
@@ -11,11 +11,11 @@ class SourceTag {
   final TagType type;
 
   SourceTag({required this.text, required this.type})
-      : jsService = JsSourceTag(text: text, type: type.value);
+      : jsSourceTag = JsSourceTag(text: text, type: type.value);
 
   Map<String, dynamic> toMap() => {
-        'text': text,
-        'type': type.value,
+        'text': jsSourceTag.text,
+        'type': jsSourceTag.type,
       };
 }
 

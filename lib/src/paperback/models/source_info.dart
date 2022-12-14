@@ -3,7 +3,7 @@ import 'package:js/js.dart';
 import 'source_tag.dart';
 
 class SourceInfo {
-  late final JsSourceInfo jsService;
+  late final JsSourceInfo jsSourceInfo;
 
   SourceInfo({
     required this.version,
@@ -16,7 +16,7 @@ class SourceInfo {
     this.authorWebsite,
     this.language,
     this.sourceTags,
-  }) : jsService = JsSourceInfo(
+  }) : jsSourceInfo = JsSourceInfo(
           version: version,
           name: name,
           icon: icon,
@@ -79,16 +79,16 @@ class SourceInfo {
   final List<SourceTag>? sourceTags;
 
   Map<String, dynamic> toMap() => {
-        'version': version,
-        'name': name,
-        'icon': icon,
-        'author': author,
-        'description': description,
-        'contentRating': contentRating.value,
-        'websiteBaseURL': websiteBaseURL,
-        'authorWebsite': authorWebsite,
-        'language': language,
-        'sourceTags': sourceTags?.map((tag) => tag.toMap()).toList(),
+        'version': jsSourceInfo.version,
+        'name': jsSourceInfo.name,
+        'icon': jsSourceInfo.icon,
+        'author': jsSourceInfo.author,
+        'description': jsSourceInfo.description,
+        'contentRating': jsSourceInfo.contentRating,
+        'websiteBaseURL': jsSourceInfo.websiteBaseURL,
+        'authorWebsite': jsSourceInfo.authorWebsite,
+        'language': jsSourceInfo.language,
+        'sourceTags': jsSourceInfo.sourceTags,
       };
 }
 
