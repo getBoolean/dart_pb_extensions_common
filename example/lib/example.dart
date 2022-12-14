@@ -1,26 +1,17 @@
-import 'dart:js';
-
 import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
 
-/// Allows assigning a function to be callable from `window.functionName()`
 @JS('Guya')
-external set _createGuya(void Function() f);
+external set _create(void Function() f);
 
 void main() {
   // Solution to allowing interop with class methods
   // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
-  _createGuya = allowInterop(() {
-    final guya = Guya();
-    final _ = jsify({
-      'getChapterDetails': allowInterop(guya.service.getChapterDetails),
-      'getChapters': allowInterop(guya.service.getChapters),
-    });
-  });
-
-  context['GuyaInfo'] = guyaInfo.toJsMap();
+  _create = registerSource(Guya());
+  registerSourceInfo({kGuyaId: guyaInfo});
 }
 
+const kGuyaId = 'GuyaInfo';
 const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
 

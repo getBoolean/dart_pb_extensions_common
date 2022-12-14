@@ -46,3 +46,4 @@ export 'paperback/base/tracker.dart';
 export 'paperback/base/source.dart';
 
 export 'paperback/api_wrapper.dart';
+export 'paperback/register.dart';
