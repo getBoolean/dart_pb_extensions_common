@@ -37,6 +37,6 @@ JsObject Function() registerSource<T extends Source>({
   );
 
   context[id] = sourceJsObject;
-  context[id] = sourceInfo.toJsMap();
+  context['${id}Info'] = sourceInfo.toJsMap();
   return sourceJsObject;
 }
