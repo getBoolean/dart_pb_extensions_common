@@ -11,7 +11,6 @@ I may revisit this in the future. The following major tasks are still needed to 
 - [x] Allow source info to be accessed from JavaScript
   - [ ] Register any source info with dart:js' `context`
 - [ ] Dart CLI for Bundle and Serve
-- [ ] Provide a way to register SourceInfo with CLI
 - [ ] Testing
 - [ ] Documentation
 - [ ] Template repository
