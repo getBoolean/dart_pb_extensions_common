@@ -1,4 +1,8 @@
-part of '../js.dart';
+import 'dart:async';
+
+import 'package:js/js.dart';
+
+import 'js.dart';
 
 /// Creates Dart `Future` which completes when [promise] is resolved or
 /// rejected.

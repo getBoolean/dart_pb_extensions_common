@@ -1,5 +1,5 @@
-import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
-import 'package:js/js.dart';
+import 'package:dart_pb_extensions_common/paperback.dart';
+import 'package:dart_pb_extensions_common/js.dart';
 
 abstract class Source implements JsSource {
   @override

@@ -1,6 +1,6 @@
 import 'package:js/js.dart';
 
-import '../../js.dart';
+import '../../js/js.dart';
 import 'request.dart';
 import 'request_interceptor.dart';
 import 'response.dart';

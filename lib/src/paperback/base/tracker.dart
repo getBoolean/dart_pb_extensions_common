@@ -1,6 +1,6 @@
 import 'package:js/js.dart';
 
-import '../../js.dart';
+import '../../js/js.dart';
 import '../models/dynamic_ui/form.dart';
 import '../models/dynamic_ui/section.dart';
 import '../models/paged_results.dart';

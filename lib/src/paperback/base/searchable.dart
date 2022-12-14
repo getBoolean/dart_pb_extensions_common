@@ -1,6 +1,6 @@
 import 'package:js/js.dart';
 
-import '../../js.dart';
+import '../../js/js.dart';
 import '../models/paged_results.dart';
 import '../models/search_field.dart';
 import '../models/search_request.dart';

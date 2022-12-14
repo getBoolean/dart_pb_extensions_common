@@ -1,6 +1,6 @@
 import 'package:js/js.dart';
 
-import '../../js.dart';
+import '../../js/js.dart';
 import 'tracked_manga_chapter_read_action.dart';
 
 @JS()

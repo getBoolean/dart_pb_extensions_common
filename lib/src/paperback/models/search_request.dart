@@ -1,6 +1,6 @@
 import 'package:js/js.dart';
 
-import '../../js.dart';
+import '../../js/js.dart';
 import 'tag_section.dart';
 
 /// The [SearchRequest] interface is a list of optional queries, which

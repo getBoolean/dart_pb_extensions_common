@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:js/js.dart';
 
-part 'js/js_util.dart';
+import 'js_promise.dart';
 
 @JS()
 // ignore: prefer_void_to_null

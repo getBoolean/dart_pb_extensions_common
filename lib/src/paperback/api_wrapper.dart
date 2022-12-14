@@ -1,6 +1,6 @@
 import 'package:js/js.dart';
 
-import '../js.dart';
+import '../js/js.dart';
 import 'base/source.dart';
 import 'models/chapter.dart';
 import 'models/chapter_details.dart';
