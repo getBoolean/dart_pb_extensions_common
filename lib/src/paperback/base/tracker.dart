@@ -18,8 +18,6 @@ abstract class Tracker implements Requestable, Searchable {
   @override
   external RequestManager get requestManager;
 
-  external factory Tracker(CheerioAPI cheerio);
-
   @override
   @JS()
   external Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
