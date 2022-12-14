@@ -1,7 +1,159 @@
 import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
 
-abstract class Source implements JsSource {
+abstract class Source {
+  late SourceFutureToPromise service;
+
+  Source() {
+    service = SourceFutureToPromise(
+      requestManaging: requestManager,
+      chapterDetails: getChapterDetails,
+      chapters: getChapters,
+      mangaDetails: getMangaDetails,
+      searchResults: getSearchResults,
+      filterUpdatedMangas: filterUpdatedMangas,
+      cloudflareBypassRequest: getCloudflareBypassRequest,
+      homePageSections: getHomePageSections,
+      mangaShareUrl: getMangaShareUrl,
+      searchFields: getSearchFields,
+      searchTags: getSearchTags,
+      sourceMenu: getSourceMenu,
+      viewMoreItems: getViewMoreItems,
+      websiteMangaDirectory: getWebsiteMangaDirectory,
+      allowsSearchOperators: allowsSearchOperators,
+      allowsTagExclusion: allowsTagExclusion,
+    );
+  }
+
+  RequestManager get requestManager;
+  Future<ChapterDetails> getChapterDetails(String mangaId, String chapterId);
+  Future<List<Chapter>> getChapters(String mangaId);
+  Future<MangaInfo> getMangaDetails(String mangaId);
+  Future<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
+
+  // <-----------        OPTIONAL METHODS        -----------> //
+
+  Future<void> filterUpdatedMangas(
+          void Function(MangaUpdates updates) updates, Date time, List<String> ids) =>
+      Future.value();
+  Request? getCloudflareBypassRequest() => null;
+  Future<void> getHomePageSections(void Function(HomeSection section) sectionCallback) =>
+      Future.value();
+  String? getMangaShareUrl(String mangaId) => null;
+  Future<List<SearchField>>? getSearchFields() => null;
+  Future<List<TagSection>>? getSearchTags() => null;
+  Future<Section>? getSourceMenu() => null;
+  Future<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata) => null;
+  Future<PagedResults>? getWebsiteMangaDirectory(Object? metadata) => null;
+  Future<bool>? allowsSearchOperators() => null;
+  Future<bool>? allowsTagExclusion() => null;
+}
+
+class SourceFutureToPromise extends SourcePromise {
+  SourceFutureToPromise({
+    required this.requestManaging,
+    required this.mangaDetails,
+    required this.chapters,
+    required this.chapterDetails,
+    required this.searchResults,
+    this.filterUpdatedMangas,
+    this.cloudflareBypassRequest,
+    this.homePageSections,
+    this.mangaShareUrl,
+    this.searchFields,
+    this.searchTags,
+    this.sourceMenu,
+    this.viewMoreItems,
+    this.websiteMangaDirectory,
+    this.allowsSearchOperators,
+    this.allowsTagExclusion,
+  });
+
+  RequestManager requestManaging;
+  Future<ChapterDetails> Function(String mangaId, String chapterId) chapterDetails;
+  Future<List<Chapter>> Function(String mangaId) chapters;
+  Future<MangaInfo> Function(String mangaId) mangaDetails;
+  Future<PagedResults> Function(SearchRequest query, Object? metadata) searchResults;
+  Future<void> Function(void Function(MangaUpdates updates) updates, Date time, List<String> ids)?
+      filterUpdatedMangas;
+  Request? Function()? cloudflareBypassRequest;
+  Future<void> Function(void Function(HomeSection section) sectionCallback)? homePageSections;
+  String? Function(String mangaId)? mangaShareUrl;
+  Future<List<SearchField>>? Function()? searchFields;
+  Future<List<TagSection>>? Function()? searchTags;
+  Future<Section>? Function()? sourceMenu;
+  Future<PagedResults>? Function(String homepageSectionId, Object? metadata)? viewMoreItems;
+  Future<PagedResults>? Function(Object? metadata)? websiteMangaDirectory;
+  Future<bool>? Function()? allowsSearchOperators;
+  Future<bool>? Function()? allowsTagExclusion;
+
+  @override
+  RequestManager get requestManager => requestManaging;
+
+  @override
+  Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId) =>
+      chapterDetails(mangaId, chapterId).toPromise();
+
+  @override
+  Promise<List<Chapter>> getChapters(String mangaId) => chapters(mangaId).toPromise();
+
+  @override
+  Promise<MangaInfo> getMangaDetails(String mangaId) => mangaDetails(mangaId).toPromise();
+
+  @override
+  Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata) =>
+      searchResults(query, metadata).toPromise();
+
+  // <-----------        OPTIONAL METHODS        -----------> //
+
+  @override
+  Promise<void>? filterUpdatedManga(
+          void Function(MangaUpdates updates) updates, Date time, List<String> ids) =>
+      filterUpdatedMangas?.call(updates, time, ids).toPromise();
+
+  @override
+  Request? getCloudflareBypassRequest() => cloudflareBypassRequest?.call();
+
+  @override
+  Promise<void>? getHomePageSections(void Function(HomeSection section) sectionCallback) {
+    return homePageSections?.call(sectionCallback).toPromise();
+  }
+
+  @override
+  String? getMangaShareUrl(String mangaId) {
+    return mangaShareUrl?.call(mangaId);
+  }
+
+  @override
+  Promise<List<SearchField>>? getSearchFields() {
+    return searchFields?.call()?.toPromise();
+  }
+
+  @override
+  Promise<List<TagSection>>? getSearchTags() => searchTags?.call()?.toPromise();
+
+  @override
+  Promise<Section>? getSourceMenu() => sourceMenu?.call()?.toPromise();
+
+  @override
+  Promise<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata) =>
+      viewMoreItems?.call(homepageSectionId, metadata)?.toPromise();
+
+  @override
+  Promise<PagedResults>? getWebsiteMangaDirectory(Object? metadata) {
+    return websiteMangaDirectory?.call(metadata)?.toPromise();
+  }
+
+  @override
+  Promise<bool> supportsSearchOperators() =>
+      allowsSearchOperators?.call()?.toPromise() ?? Promise.of(null);
+
+  @override
+  Promise<bool> supportsTagExclusion() =>
+      allowsTagExclusion?.call()?.toPromise() ?? Promise.of(null);
+}
+
+abstract class SourcePromise implements JsSource {
   @override
   RequestManager get requestManager;
 
@@ -49,10 +201,10 @@ abstract class Source implements JsSource {
   Promise<PagedResults>? getWebsiteMangaDirectory(Object? metadata) => null;
 
   @override
-  Promise<bool> Function()? get supportsSearchOperators => null;
+  Promise<bool>? supportsSearchOperators() => null;
 
   @override
-  Promise<bool> Function()? get supportsTagExclusion => null;
+  Promise<bool>? supportsTagExclusion() => null;
 }
 
 @JS('Source')
@@ -113,10 +265,12 @@ abstract class JsSource implements Requestable, Searchable {
   external Promise<List<TagSection>>? getSearchTags();
 
   @override
-  external Promise<bool> Function()? get supportsTagExclusion;
+  @JS()
+  external Promise<bool>? supportsTagExclusion();
 
   @override
-  external Promise<bool> Function()? get supportsSearchOperators;
+  @JS()
+  external Promise<bool>? supportsSearchOperators();
 
   /// A stateful source may require user input.
   /// By supplying this value to the Source, the app will render your form to the user

@@ -21,6 +21,9 @@ abstract class Searchable extends Requestable {
   @JS()
   external Promise<List<SearchField>>? getSearchFields();
 
-  external Promise<bool> Function()? get supportsTagExclusion;
-  external Promise<bool> Function()? get supportsSearchOperators;
+  @JS()
+  external Promise<bool>? supportsTagExclusion();
+
+  @JS()
+  external Promise<bool>? supportsSearchOperators();
 }

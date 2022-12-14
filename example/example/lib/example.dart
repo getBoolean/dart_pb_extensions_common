@@ -37,7 +37,7 @@ final SourceInfo guyaInfo = SourceInfo(
   ],
 );
 
-class Guya extends Source {
+class Guya extends SourcePromise {
   @override
   RequestManager get requestManager => RequestManager(requestsPerSecond: 5, requestTimeout: 10000);
 
