@@ -79,32 +79,27 @@ class Guya extends Source {
 
   @override
   Promise<List<Chapter>> getChapters(String mangaId) {
-    // TODO: implement getChapters
     throw UnimplementedError();
   }
 
   @override
   Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId) {
-    // TODO: implement getChapterDetails
     throw UnimplementedError();
   }
 
   @override
   Promise<void>? filterUpdatedManga(
       void Function(MangaUpdates updates) updates, Date time, List<String> ids) {
-    // TODO: implement filterUpdatedManga
     throw UnimplementedError();
   }
 
   @override
   Promise<void>? getHomePageSections(void Function(HomeSection section) sectionCallback) {
-    // TODO: implement getHomePageSections
     throw UnimplementedError();
   }
 
   @override
   Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata) {
-    // TODO: implement getSearchResults
     throw UnimplementedError();
   }
 }
