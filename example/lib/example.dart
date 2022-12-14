@@ -20,13 +20,13 @@ SourceInfo guyaInfo = SourceInfo(
   author: 'getBoolean',
   authorWebsite: 'https://github.com/getBoolean',
   description: 'Extension that pulls manga from Guya.moe.',
-  contentRating: ContentRating.everyone.value,
+  contentRating: ContentRating.everyone,
   websiteBaseURL: kGuyaDomain,
   language: LanguageCode.english.code,
   sourceTags: [
     SourceTag(
       text: 'Notifications',
-      type: TagType.green.value,
+      type: TagType.green,
     ),
   ],
 );
