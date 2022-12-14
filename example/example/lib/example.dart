@@ -1,12 +1,6 @@
-import 'dart:convert';
-
 import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
 
-import 'utils.dart';
-
-void main() {
-  functionName();
-}
+void main() {}
 
 const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
@@ -29,8 +23,6 @@ const SourceInfo guyaInfo = SourceInfo(
 );
 
 class Guya extends Source {
-  const Guya(super.cheerio);
-
   @override
   RequestManager get requestManager => RequestManager(requestsPerSecond: 5, requestTimeout: 10000);
 
@@ -42,7 +34,7 @@ class Guya extends Source {
     final request = Request(url: '$kGuyaApiBase/series_page_data/$mangaId', method: 'GET');
     final mangaInfo = requestManager.schedule(request, 1).toFuture().then((Response response) {
       final responseData = response.data;
-      final dynamic data = (responseData is String) ? jsonDecode(responseData) : response.data;
+      final dynamic data = (responseData is String) ? parseJson(responseData) : response.data;
       if (data! is Map<String, Object?>) {
         throw JsError('Invalid response data: $responseData');
       }
@@ -72,7 +64,6 @@ class Guya extends Source {
 
   @override
   Promise<List<Chapter>> getChapters(String mangaId) {
-    final $ = cheerio.load('');
     // TODO: implement getChapters
     throw UnimplementedError();
   }
@@ -101,4 +92,10 @@ class Guya extends Source {
     // TODO: implement getSearchResults
     throw UnimplementedError();
   }
+}
+
+T? asType<T>(Object? value) => value is T ? value : null;
+
+extension ListUtils on List {
+  List<V> removeNull<V>() => whereType<V>().toList();
 }
