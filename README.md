@@ -4,7 +4,7 @@ ON HIATUS: This project has been put on hiatus since it is a much bigger project
 I may revisit this in the future. The following major tasks are still needed to be completed:
 
 - [x] Dart bindings for the Paperback Source models
-- [ ] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
+- [x] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
 `await` to be used.
 - [x] Allow certain class methods to interop with JavaScript via `allowInterop`
   - [ ] Implement an easy way to register a source and its methods with `allowInterop`
