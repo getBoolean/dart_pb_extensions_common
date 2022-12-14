@@ -9,7 +9,7 @@ void main() {
   );
 }
 
-const kGuyaId = 'GuyaInfo';
+const kGuyaId = 'Guya';
 const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
 
