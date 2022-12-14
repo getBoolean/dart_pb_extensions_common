@@ -6,8 +6,8 @@ I may revisit this in the future. The following major tasks are still needed to 
 - [x] Dart bindings for the Paperback Source models
 - [ ] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
 `await` to be used.
-- [ ] Allow certain class methods to interop with JavaScript via `allowInterop` (This is where I am stuck,
-I am not sure how to do this for class methods. I need to investigate how paperback consumes the sources.)
+- [x] Allow certain class methods to interop with JavaScript via `allowInterop`
+  - [ ] Implement an easy way to register a source and its methods with `allowInterop`
 - [ ] Dart CLI for Bundle and Serve
 - [ ] Provide a way to register SourceInfo with CLI
 - [ ] Testing

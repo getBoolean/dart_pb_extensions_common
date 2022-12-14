@@ -1,9 +1,22 @@
 import 'dart:convert';
 
-import 'package:dart_pb_extensions_common/dart_pb_extensions_common.dart';
+import 'package:dart_pb_extensions_common/paperback.dart';
+import 'package:dart_pb_extensions_common/js.dart';
+
+/// Allows assigning a function to be callable from `window.functionName()`
+@JS('Guya')
+external set _createGuya(void Function() f);
 
 void main() {
-  functionName();
+  // Solution to allowing interop with class methods
+  // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
+  _createGuya = allowInterop(() {
+    final guya = Guya();
+    final _ = jsify({
+      'getChapterDetails': allowInterop(guya.getChapterDetails),
+      'getChapters': allowInterop(guya.getChapters),
+    });
+  });
 }
 
 const kGuyaDomain = 'https://guya.cubari.moe';
