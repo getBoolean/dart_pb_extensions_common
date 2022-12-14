@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:js/js.dart';
 
 import 'source_tag.dart';
@@ -60,12 +62,27 @@ class SourceInfo {
     required String icon,
     required String author,
     required String description,
-    required ContentRating contentRating,
+    required String contentRating,
     required String websiteBaseURL,
     String? authorWebsite,
     String? language,
     List<SourceTag>? sourceTags,
   });
+}
+
+extension SourceInfoToMap on SourceInfo {
+  JsObject toJsMap() => JsObject.jsify({
+        'version': version,
+        'name': name,
+        'icon': icon,
+        'author': author,
+        'description': description,
+        'contentRating': contentRating,
+        'websiteBaseURL': websiteBaseURL,
+        'authorWebsite': authorWebsite,
+        'language': language,
+        'sourceTags': sourceTags?.map((e) => e.toMap()).toList(),
+      });
 }
 
 /// A content rating to be attributed to each source.

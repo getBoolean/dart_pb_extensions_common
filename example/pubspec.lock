@@ -74,7 +74,7 @@ packages:
   dart_pb_extensions_common:
     dependency: "direct main"
     description:
-      path: "../.."
+      path: ".."
       relative: true
     source: path
     version: "1.0.0"

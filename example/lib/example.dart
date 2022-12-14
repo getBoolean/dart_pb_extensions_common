@@ -1,9 +1,14 @@
+import 'dart:js';
+
 import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
 
 /// Allows assigning a function to be callable from `window.functionName()`
 @JS('Guya')
 external set _createGuya(void Function() f);
+
+// @JS('GuyaInfo')
+// external set _GuyaInfo(SourceInfo Function() f);
 
 void main() {
   // Solution to allowing interop with class methods
@@ -15,24 +20,27 @@ void main() {
       'getChapters': allowInterop(guya.getChapters),
     });
   });
+
+  context['GuyaInfo'] = guyaInfo.toJsMap();
 }
 
 const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
 
-final SourceInfo guyaInfo = SourceInfo(
+SourceInfo guyaInfo = SourceInfo(
   version: '2.0.0',
   name: 'Guya (Dart)',
   icon: 'icon.png',
   author: 'getBoolean',
   authorWebsite: 'https://github.com/getBoolean',
   description: 'Extension that pulls manga from Guya.moe.',
-  contentRating: ContentRating.everyone,
+  contentRating: ContentRating.everyone.value,
   websiteBaseURL: kGuyaDomain,
+  language: LanguageCode.english.code,
   sourceTags: [
     SourceTag(
       text: 'Notifications',
-      type: TagType.green,
+      type: TagType.green.value,
     ),
   ],
 );

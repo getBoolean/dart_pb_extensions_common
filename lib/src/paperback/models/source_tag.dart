@@ -1,3 +1,6 @@
+import 'dart:js';
+
+import 'package:dart_pb_extensions_common/js.dart';
 import 'package:js/js.dart';
 
 @JS()
@@ -12,7 +15,14 @@ class SourceTag {
   /// Use [TagType] to define the type of the tag
   external String get type;
 
-  external factory SourceTag({required String text, required TagType type});
+  external factory SourceTag({required String text, required String type});
+}
+
+extension SourceTagToMap on SourceTag {
+  JsObject toMap() => JsObject.jsify({
+        'text': text,
+        'type': type,
+      });
 }
 
 /// An enumerator which [SourceTag] uses to define the color of the tag rendered on the website.

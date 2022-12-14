@@ -7,7 +7,9 @@ I may revisit this in the future. The following major tasks are still needed to 
 - [x] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
 `await` to be used.
 - [x] Allow certain class methods to interop with JavaScript via `allowInterop`
-  - [ ] Implement an easy way to register a source and its methods with `allowInterop`
+  - [ ] Register any source and its methods with `allowInterop`
+- [x] Allow source info to be accessed from JavaScript
+  - [ ] Register any source info with dart:js' `context`
 - [ ] Dart CLI for Bundle and Serve
 - [ ] Provide a way to register SourceInfo with CLI
 - [ ] Testing

@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   dart_pb_extensions_common:
-    path: "../../"
+    path: "../"
 
 dev_dependencies:
   lints: ^2.0.0
