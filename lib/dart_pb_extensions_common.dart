@@ -1,6 +1,8 @@
 @JS()
 library dart_pb_extensions_common;
 
+export 'package:html/parser.dart' show parse;
+export 'package:html/dom.dart';
 export 'src/utils.dart';
 export 'src/js.dart';
 export 'src/paperback.dart';
