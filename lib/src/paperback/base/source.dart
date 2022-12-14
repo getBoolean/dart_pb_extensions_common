@@ -20,8 +20,8 @@ abstract class Source {
       sourceMenu: getSourceMenu,
       viewMoreItems: getViewMoreItems,
       websiteMangaDirectory: getWebsiteMangaDirectory,
-      allowsSearchOperators: allowsSearchOperators,
-      allowsTagExclusion: allowsTagExclusion,
+      allowsSearchOperators: supportsSearchOperators,
+      allowsTagExclusion: supportsTagExclusion,
     );
   }
 
@@ -45,8 +45,8 @@ abstract class Source {
   Future<Section>? getSourceMenu() => null;
   Future<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata) => null;
   Future<PagedResults>? getWebsiteMangaDirectory(Object? metadata) => null;
-  Future<bool>? allowsSearchOperators() => null;
-  Future<bool>? allowsTagExclusion() => null;
+  Future<bool>? supportsSearchOperators() => null;
+  Future<bool>? supportsTagExclusion() => null;
 }
 
 class SourceFutureToPromise extends SourcePromise {
@@ -145,12 +145,10 @@ class SourceFutureToPromise extends SourcePromise {
   }
 
   @override
-  Promise<bool> supportsSearchOperators() =>
-      allowsSearchOperators?.call()?.toPromise() ?? Promise.of(null);
+  Promise<bool>? supportsSearchOperators() => allowsSearchOperators?.call()?.toPromise();
 
   @override
-  Promise<bool> supportsTagExclusion() =>
-      allowsTagExclusion?.call()?.toPromise() ?? Promise.of(null);
+  Promise<bool>? supportsTagExclusion() => allowsTagExclusion?.call()?.toPromise();
 }
 
 abstract class SourcePromise implements JsSource {
