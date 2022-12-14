@@ -1,14 +1,12 @@
 import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
 
-@JS('Guya')
-external set _create(void Function() f);
-
 void main() {
-  // Solution to allowing interop with class methods
-  // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
-  _create = registerSource(Guya());
-  registerSourceInfo({kGuyaId: guyaInfo});
+  registerSource(
+    id: kGuyaId,
+    sourceInfo: guyaInfo,
+    sourceCreator: () => Guya(),
+  );
 }
 
 const kGuyaId = 'GuyaInfo';
