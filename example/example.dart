@@ -52,7 +52,7 @@ class Guya extends Source {
     final mangaInfo = requestManager.schedule(request, 1).toFuture().then((Response response) {
       final responseData = response.data;
       final dynamic data = (responseData is String) ? jsonDecode(responseData) : response.data;
-      if (data! is Map<String, Object?>) {
+      if (data is! Map<String, Object?>) {
         throw JsError('Invalid response data: $responseData');
       }
 
