@@ -12,7 +12,7 @@ class SourceTag {
   /// Use [TagType] to define the type of the tag
   external String get type;
 
-  external const factory SourceTag({required String text, required TagType type});
+  external factory SourceTag({required String text, required TagType type});
 }
 
 /// An enumerator which [SourceTag] uses to define the color of the tag rendered on the website.
