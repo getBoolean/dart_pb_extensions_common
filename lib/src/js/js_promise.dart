@@ -2,7 +2,6 @@
 
 import 'dart:async';
 
-import 'package:dart_pb_extensions_common/src/js/js.dart';
 import 'package:js/js.dart';
 
 /// Creates Dart `Future` which completes when [promise] is resolved or

@@ -3,6 +3,8 @@ library js;
 
 import 'package:js/js.dart';
 
+export 'dart:js' show JsObject;
+
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' hide promiseToFuture, objectKeys;
 

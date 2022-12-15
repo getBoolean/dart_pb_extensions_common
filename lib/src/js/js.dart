@@ -1,8 +1,5 @@
 library dart_pb_extensions_common.js;
 
-import 'dart:async';
-
-import 'package:dart_pb_extensions_common/src/js/js_promise.dart';
 import 'package:js/js.dart';
 
 @JS()
