@@ -6,5 +6,5 @@ import '../models/request_manager.dart';
 abstract class Requestable {
   /// Manages the ratelimits and the number of requests that can be done per second
   /// This is also used to fetch pages when a chapter is downloading
-  external RequestManager get requestManager;
+  external JsRequestManager get requestManager;
 }

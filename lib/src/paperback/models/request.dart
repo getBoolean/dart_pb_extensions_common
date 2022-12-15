@@ -6,34 +6,42 @@ import '../../js/js.dart';
 class Request {
   /// The URL which this HTTP request should be delivered to
   external String get url;
+  external set url(String url);
 
   /// The type of HTTP method. Usually GET or POST
   external String get method;
+  external set method(String method);
 
   /// Metadata is something which can be applied to a Request, which will
   /// be passed on to the function which consumes this request. By inserting
   /// data here, you are able to forward any data you need as a Source developer
   /// to the methods meant to parse the returning data
   external Object? get metadata;
+  external set metadata(Object? metadata);
 
   /// Any HTTP headers which should be applied to this request
   external Map<String, String>? get headers;
+  external set headers(Map<String, String>? headers);
 
   /// Data which
   external Object? get data;
+  external set data(Object? data);
 
   /// Formatted parameters which are to be associated to the end of the URL.
   ///
   /// Eg: `?paramOne=ImportantData&paramTwo=MoreData`
   external String? get param;
+  external set param(String? param);
 
   /// Any formatted cookies which should be inserted into the header
   ///
   /// Cookies need to be formatted to be put into headers
   external List<Cookie>? get cookies;
+  external set cookies(List<Cookie>? cookies);
 
   /// A toggle for if this request should be made in incognito mode or not
   external bool? get incognito;
+  external set incognito(bool? incognito);
 
   factory Request({
     required String url,

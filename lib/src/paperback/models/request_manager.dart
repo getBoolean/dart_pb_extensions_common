@@ -9,17 +9,35 @@ import 'response.dart';
 abstract class RequestManagerInfo {
   external num requestsPerSecond;
   external num? requestTimeout;
-  external RequestInterceptor? interceptor;
+  external JsRequestInterceptor? interceptor;
 }
 
-@JS()
-class RequestManager extends RequestManagerInfo {
-  external Promise<Response> Function(Request request, num retryCount) schedule;
+class RequestManager {
+  late final JsRequestManager jsRequestManager;
 
-  factory RequestManager({
+  Future<Response> schedule(Request request, num retryCount) {
+    return jsRequestManager.schedule(request, retryCount).toFuture();
+  }
+
+  RequestManager({
     required num requestsPerSecond,
     num? requestTimeout,
     RequestInterceptor? interceptor,
+  }) : jsRequestManager = JsRequestManager(
+          requestsPerSecond: requestsPerSecond,
+          requestTimeout: requestTimeout,
+          interceptor: interceptor?.jsRequestInterceptor,
+        );
+}
+
+@JS('RequestManager')
+class JsRequestManager extends RequestManagerInfo {
+  external Promise<Response> Function(Request request, num retryCount) schedule;
+
+  factory JsRequestManager({
+    required num requestsPerSecond,
+    num? requestTimeout,
+    JsRequestInterceptor? interceptor,
   }) =>
       _createRequestManager(_CreateRequestManagerInfoOptions(
         requestsPerSecond: requestsPerSecond,
@@ -33,16 +51,16 @@ class RequestManager extends RequestManagerInfo {
 class _CreateRequestManagerInfoOptions {
   external num get requestsPerSecond;
   external num? get requestTimeout;
-  external RequestInterceptor? get interceptor;
+  external JsRequestInterceptor? get interceptor;
 
   external factory _CreateRequestManagerInfoOptions({
     num requestsPerSecond,
     num? requestTimeout,
-    RequestInterceptor? interceptor,
+    JsRequestInterceptor? interceptor,
   });
 }
 
 @JS('createRequestManager')
-external RequestManager _createRequestManager(
+external JsRequestManager _createRequestManager(
   _CreateRequestManagerInfoOptions options,
 );

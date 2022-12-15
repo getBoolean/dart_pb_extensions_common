@@ -33,12 +33,26 @@ SourceInfo guyaInfo = SourceInfo(
 
 class Guya extends Source {
   @override
-  RequestManager get requestManager => RequestManager(requestsPerSecond: 5, requestTimeout: 10000);
+  RequestManager get requestManager => RequestManager(
+        requestsPerSecond: 5,
+        requestTimeout: 10000,
+        interceptor: RequestInterceptor(
+          interceptRequest: (request) async {
+            request.headers = {
+              ...(request.headers ?? {}),
+              ...{'referer': '$kGuyaDomain/'}
+            };
+
+            return request;
+          },
+          interceptResponse: (response) async => response,
+        ),
+      );
 
   @override
   Future<MangaInfo> getMangaDetails(String mangaId) async {
     final request = Request(url: '$kGuyaApiBase/series_page_data/$mangaId', method: 'GET');
-    final response = await requestManager.schedule(request, 1).toFuture();
+    final response = await requestManager.schedule(request, 1);
 
     final responseData = response.data;
     final dynamic data = (responseData is String) ? parseJson(responseData) : response.data;

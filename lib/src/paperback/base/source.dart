@@ -6,7 +6,7 @@ abstract class Source {
 
   Source() {
     service = SourceFutureToPromise(
-      requestManaging: requestManager,
+      requestManaging: requestManager.jsRequestManager,
       chapterDetails: getChapterDetails,
       chapters: getChapters,
       mangaDetails: getMangaDetails,
@@ -160,7 +160,7 @@ class SourceFutureToPromise extends SourcePromise {
     this.allowsTagExclusion,
   });
 
-  RequestManager requestManaging;
+  JsRequestManager requestManaging;
   Future<ChapterDetails> Function(String mangaId, String chapterId) chapterDetails;
   Future<List<Chapter>> Function(String mangaId) chapters;
   Future<MangaInfo> Function(String mangaId) mangaDetails;
@@ -179,7 +179,7 @@ class SourceFutureToPromise extends SourcePromise {
   Future<bool>? Function()? allowsTagExclusion;
 
   @override
-  RequestManager get requestManager => requestManaging;
+  JsRequestManager get requestManager => requestManaging;
 
   @override
   Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId) =>
@@ -244,7 +244,7 @@ class SourceFutureToPromise extends SourcePromise {
 
 abstract class SourcePromise implements JsSource {
   @override
-  RequestManager get requestManager;
+  JsRequestManager get requestManager;
 
   @override
   Promise<MangaInfo> getMangaDetails(String mangaId);
@@ -299,7 +299,7 @@ abstract class SourcePromise implements JsSource {
 @JS('Source')
 abstract class JsSource implements Requestable, Searchable {
   @override
-  external RequestManager get requestManager;
+  external JsRequestManager get requestManager;
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method
   /// to grab and populate a [Chapter] object
