@@ -317,7 +317,7 @@ abstract class JsSource implements Requestable, Searchable {
   external Promise<PagedResults>? getWebsiteMangaDirectory(Object? metadata);
 }
 
-/// Many sites use '[x] time ago' - Figured it would be good to handle these cases in general
+/// Many sites use `[x] time ago` - Figured it would be good to handle these cases in general
 ///
 /// JavaScript implementation:
 /// ```js
