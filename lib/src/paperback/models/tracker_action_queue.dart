@@ -4,29 +4,24 @@ import '../../js/js.dart';
 import 'tracked_manga_chapter_read_action.dart';
 
 class TrackerActionQueue {
-  final JsTrackerActionQueue jsQueue;
+  final JsTrackerActionQueue jsTrackerActionQueue;
 
-  TrackerActionQueue(this.jsQueue);
+  TrackerActionQueue(this.jsTrackerActionQueue);
 
-  Future<void> discardAllChapterReadAction() {
-    return jsQueue.discardAllChapterReadAction().toFuture();
-  }
+  Future<void> discardAllChapterReadAction() =>
+      jsTrackerActionQueue.discardAllChapterReadAction().toFuture();
 
-  Future<void> discardChapterReadAction(TrackedMangaChapterReadAction action) {
-    return jsQueue.discardChapterReadAction(action).toFuture();
-  }
+  Future<void> discardChapterReadAction(TrackedMangaChapterReadAction action) =>
+      jsTrackerActionQueue.discardChapterReadAction(action).toFuture();
 
-  Future<List<TrackedMangaChapterReadAction>> queuedChapterReadActions() {
-    return jsQueue.queuedChapterReadActions().toFuture();
-  }
+  Future<List<TrackedMangaChapterReadAction>> queuedChapterReadActions() =>
+      jsTrackerActionQueue.queuedChapterReadActions().toFuture();
 
-  Future<void> retryAllChapterReadAction() {
-    return jsQueue.retryAllChapterReadAction().toFuture();
-  }
+  Future<void> retryAllChapterReadAction() =>
+      jsTrackerActionQueue.retryAllChapterReadAction().toFuture();
 
-  Future<void> retryChapterReadAction(TrackedMangaChapterReadAction action) {
-    return jsQueue.retryChapterReadAction(action).toFuture();
-  }
+  Future<void> retryChapterReadAction(TrackedMangaChapterReadAction action) =>
+      jsTrackerActionQueue.retryChapterReadAction(action).toFuture();
 }
 
 @JS('TrackerActionQueue')
