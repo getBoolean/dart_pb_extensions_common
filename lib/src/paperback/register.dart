@@ -47,6 +47,7 @@ JsObject Function() registerSource<T extends Source>({
 JsObject Function() registerTracker<T extends Tracker>({
   required String id,
   required Tracker Function() trackerCreator,
+  required SourceInfo sourceInfo,
 }) {
   final trackerJsObject = allowInterop(
     () {
@@ -66,5 +67,6 @@ JsObject Function() registerTracker<T extends Tracker>({
   );
 
   context[id] = trackerJsObject;
+  context['${id}Info'] = JsObject.jsify(sourceInfo.toMap());
   return trackerJsObject;
 }
