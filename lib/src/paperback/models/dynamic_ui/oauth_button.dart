@@ -13,7 +13,7 @@ class OAuthButton extends FormRowTyped<String?> {
   external List<String>? get scopes;
 
   /// Store this inside the keychain in the state manager
-  external Promise<void> Function(String accessToken, String? refreshToken) get successHandler;
+  external Promise<void> Function(String accessToken, [String? refreshToken]) get successHandler;
 
   factory OAuthButton({
     required String label,
@@ -22,7 +22,7 @@ class OAuthButton extends FormRowTyped<String?> {
     required OAuthResponseType responseType,
     String? redirectUri,
     List<String>? scopes,
-    required Future<void> Function(String accessToken, String? refreshToken) successHandler,
+    required Future<void> Function(String accessToken, [String? refreshToken]) successHandler,
   }) =>
       _createOAuthButton(
         _CreateOAuthButtonOptions(
@@ -32,7 +32,7 @@ class OAuthButton extends FormRowTyped<String?> {
           responseType: responseType,
           redirectUri: redirectUri,
           scopes: scopes,
-          successHandler: (String accessToken, String? refreshToken) =>
+          successHandler: (String accessToken, [String? refreshToken]) =>
               Promise.of(successHandler(accessToken, refreshToken)),
         ),
       );
