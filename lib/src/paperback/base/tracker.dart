@@ -1,8 +1,7 @@
+import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/tag_section.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/search_field.dart';
-import 'package:js/js.dart';
 
-import '../../js/js.dart';
 import '../models/dynamic_ui/form.dart';
 import '../models/dynamic_ui/section.dart';
 import '../models/paged_results.dart';
@@ -51,49 +50,34 @@ class TrackerFutureToPromiseAdapter implements JsTracker {
   JsRequestManager get requestManager => tracker.requestManager.jsRequestManager;
 
   @override
-  Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata) {
-    return Promise.of(tracker.getSearchResults(query, metadata));
-  }
+  Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata) =>
+      Promise.of(tracker.getSearchResults(query, metadata));
 
   @override
-  Promise<Form> getMangaForm(String mangaId) {
-    return Promise.of(tracker.getMangaForm(mangaId));
-  }
+  Promise<Form> getMangaForm(String mangaId) => Promise.of(tracker.getMangaForm(mangaId));
 
   @override
-  Promise<TrackedManga> getTrackedManga(String mangaId) {
-    return Promise.of(tracker.getTrackedManga(mangaId));
-  }
+  Promise<TrackedManga> getTrackedManga(String mangaId) =>
+      Promise.of(tracker.getTrackedManga(mangaId));
 
   @override
-  Promise<Section> getSourceMenu() {
-    return Promise.of(tracker.getSourceMenu());
-  }
+  Promise<Section> getSourceMenu() => Promise.of(tracker.getSourceMenu());
 
   @override
-  Promise<void> processActionQueue(TrackerActionQueue actionQueue) {
-    return Promise.of(tracker.processActionQueue(actionQueue));
-  }
+  Promise<void> processActionQueue(TrackerActionQueue actionQueue) =>
+      Promise.of(tracker.processActionQueue(actionQueue));
 
   @override
-  Promise<List<SearchField>>? getSearchFields() {
-    return Promise.of(tracker.getSearchFields());
-  }
+  Promise<List<SearchField>>? getSearchFields() => tracker.getSearchFields()?.toPromise();
 
   @override
-  Promise<List<TagSection>>? getSearchTags() {
-    return Promise.of(tracker.getSearchTags());
-  }
+  Promise<List<TagSection>>? getSearchTags() => tracker.getSearchTags()?.toPromise();
 
   @override
-  Promise<bool>? supportsSearchOperators() {
-    return Promise.of(tracker.supportsSearchOperators());
-  }
+  Promise<bool>? supportsSearchOperators() => tracker.supportsSearchOperators()?.toPromise();
 
   @override
-  Promise<bool>? supportsTagExclusion() {
-    return Promise.of(tracker.supportsTagExclusion());
-  }
+  Promise<bool>? supportsTagExclusion() => tracker.supportsTagExclusion()?.toPromise();
 }
 
 @JS('JsTracker')
