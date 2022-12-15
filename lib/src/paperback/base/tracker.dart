@@ -32,6 +32,8 @@ abstract class Tracker {
   /// NOTE: Retried actions older than 24 hours will be discarded
   Future<void> processActionQueue(TrackerActionQueue actionQueue);
 
+  // <-----------        OPTIONAL METHODS        -----------> //
+
   Future<List<TagSection>>? getSearchTags();
 
   Future<List<SearchField>>? getSearchFields();
