@@ -14,14 +14,14 @@ class Section {
     required String id,
     String? header,
     String? footer,
-    required Promise<List<FormRow>> Function() rows,
+    required Future<List<FormRow>> Function() rows,
   }) =>
       _createSection(
         _CreateSectionOptions(
           id: id,
           header: header,
           footer: footer,
-          rows: rows,
+          rows: () => Promise.of(rows()),
         ),
       );
 }

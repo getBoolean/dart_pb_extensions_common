@@ -10,15 +10,15 @@ class Form {
   external Promise<bool> Function(Object? values) get validate;
 
   factory Form({
-    required List<Section> Function() sections,
-    required void Function(Object? values) onSubmit,
-    required bool Function(Object? values) validate,
+    required Future<List<Section>> Function() sections,
+    required Future<void> Function(Object? values) onSubmit,
+    required Future<bool> Function(Object? values) validate,
   }) =>
       _createForm(
         _CreateFormOptions(
-          sections: sections,
-          onSubmit: onSubmit,
-          validate: validate,
+          sections: () => Promise.of(sections()),
+          onSubmit: (Object? values) => Promise.of(onSubmit(values)),
+          validate: (Object? values) => Promise.of(validate(values)),
         ),
       );
 }
@@ -26,13 +26,14 @@ class Form {
 @JS()
 @anonymous
 class _CreateFormOptions {
-  external List<Section> Function() get sections;
-  external void Function(Object? values) get onSubmit;
-  external bool Function(Object? values) get validate;
+  external Promise<List<Section>> Function() get sections;
+  external Promise<void> Function(Object? values) get onSubmit;
+  external Promise<bool> Function(Object? values) get validate;
+
   external factory _CreateFormOptions({
-    required List<Section> Function() sections,
-    required void Function(Object? values) onSubmit,
-    required bool Function(Object? values) validate,
+    required Promise<List<Section>> Function() sections,
+    required Promise<void> Function(Object? values) onSubmit,
+    required Promise<bool> Function(Object? values) validate,
   });
 }
 

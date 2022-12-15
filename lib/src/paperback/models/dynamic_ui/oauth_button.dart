@@ -23,7 +23,7 @@ class OAuthButton extends FormRowTyped<String?> {
     required OAuthResponseType responseType,
     String? redirectUri,
     List<String>? scopes,
-    required void Function(String accessToken, String? refreshToken) successHandler,
+    required Future<void> Function(String accessToken, String? refreshToken) successHandler,
   }) =>
       _createOAuthButton(
         _CreateOAuthButtonOptions(
@@ -33,7 +33,8 @@ class OAuthButton extends FormRowTyped<String?> {
           responseType: responseType,
           redirectUri: redirectUri,
           scopes: scopes,
-          successHandler: successHandler,
+          successHandler: (String accessToken, String? refreshToken) =>
+              Promise.of(successHandler(accessToken, refreshToken)),
         ),
       );
 }
@@ -74,7 +75,7 @@ class _CreateOAuthButtonOptions {
   external OAuthResponseType get responseType;
   external String? get redirectUri;
   external List<String>? get scopes;
-  external void Function(String accessToken, String? refreshToken) get successHandler;
+  external Promise<void> Function(String accessToken, String? refreshToken) get successHandler;
 
   external factory _CreateOAuthButtonOptions({
     required String label,
@@ -83,7 +84,7 @@ class _CreateOAuthButtonOptions {
     required OAuthResponseType responseType,
     String? redirectUri,
     List<String>? scopes,
-    required void Function(String accessToken, String? refreshToken) successHandler,
+    required Promise<void> Function(String accessToken, String? refreshToken) successHandler,
   });
 }
 
