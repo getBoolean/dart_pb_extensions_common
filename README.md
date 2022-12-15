@@ -1,16 +1,17 @@
 # Paperback Sources (Dart)
 
-ON HIATUS: This project has been put on hiatus since it is a much bigger project than I first thought.
-I may revisit this in the future. The following major tasks are still needed to be completed:
+Status: **In Development**
+
+The following major tasks are still needed to be completed:
 
 - [x] Dart bindings for the Paperback Source models
 - [x] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
 `await` to be used.
 - [x] Allow certain class methods to interop with JavaScript via `allowInterop`
-  - [ ] Register any source and its methods with `allowInterop`
+  - [x] Register any source and its methods with `allowInterop`
 - [x] Allow source info to be accessed from JavaScript
-  - [ ] Register any source info with dart:js' `context`
-- [ ] Dart CLI for Bundle and Serve
+  - [x] Register any source info with dart:js' `context`
+- [ ] Dart Toolchain CLI for Bundle and Serve
 - [ ] Testing
 - [ ] Documentation
 - [ ] Template repository
