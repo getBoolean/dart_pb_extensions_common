@@ -80,7 +80,7 @@ class TrackerFutureToPromiseAdapter implements JsTracker {
   Promise<bool>? supportsTagExclusion() => tracker.supportsTagExclusion()?.toPromise();
 }
 
-@JS('JsTracker')
+@JS('Tracker')
 abstract class JsTracker implements Requestable, Searchable {
   /// Manages the ratelimits and the number of requests that can be done per second
   /// This is also used to fetch pages when a chapter is downloading

@@ -29,7 +29,7 @@ class TrackerActionQueue {
   }
 }
 
-@JS()
+@JS('TrackerActionQueue')
 class JsTrackerActionQueue {
   external Promise<List<TrackedMangaChapterReadAction>> queuedChapterReadActions();
   external Promise<void> retryChapterReadAction(TrackedMangaChapterReadAction action);
