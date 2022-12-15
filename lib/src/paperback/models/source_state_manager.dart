@@ -1,27 +1,29 @@
 import 'package:dart_pb_extensions_common/src/js/js_promise.dart';
 import 'package:js/js.dart';
 
+class SourceStateManager {
+  JsSourceStateManager jsSourceStateManager = JsSourceStateManager();
+
+  SourceStateManager();
+
+  Future<void> store(String key, Object value) =>
+      jsSourceStateManager.store.call(key, value).toFuture();
+
+  Future<Object?> retrieve(String key) => jsSourceStateManager.retrieve.call(key).toFuture();
+
+  SourceKeychain get keychain => jsSourceStateManager.keychain;
+}
+
 @JS()
 abstract class SourceStateManagerInfo {}
 
-@JS()
-class SourceStateManager extends SourceStateManagerInfo {
+@JS('SourceStateManager')
+class JsSourceStateManager extends SourceStateManagerInfo {
   external Promise<void> Function(String key, Object value) get store;
   external Promise<Object?> Function(String key) get retrieve;
   external SourceKeychain get keychain;
 
-  factory SourceStateManager({
-    required Promise<void> Function(String key, Object value) store,
-    required Promise<Object?> Function(String key) retrieve,
-    required SourceKeychain keychain,
-  }) =>
-      _createSourceStateManager(
-        _CreateSourceStateManagerInfo(
-          store: store,
-          retrieve: retrieve,
-          keychain: keychain,
-        ),
-      );
+  factory JsSourceStateManager() => _createSourceStateManager(_CreateSourceStateManagerInfo());
 }
 
 @JS()
@@ -33,18 +35,10 @@ class SourceKeychain {
 @JS()
 @anonymous
 class _CreateSourceStateManagerInfo {
-  external Promise<void> Function(String key, Object value) get store;
-  external Promise<Object?> Function(String key) get retrieve;
-  external SourceKeychain get keychain;
-
-  external factory _CreateSourceStateManagerInfo({
-    required Promise<void> Function(String key, Object value) store,
-    required Promise<Object?> Function(String key) retrieve,
-    required SourceKeychain keychain,
-  });
+  external factory _CreateSourceStateManagerInfo();
 }
 
 @JS('createSourceStateManager')
-external SourceStateManager _createSourceStateManager(
+external JsSourceStateManager _createSourceStateManager(
   _CreateSourceStateManagerInfo info,
 );

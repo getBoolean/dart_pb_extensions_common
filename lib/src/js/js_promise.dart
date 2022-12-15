@@ -47,7 +47,7 @@ class Promise<T> {
   );
 
   external Promise then(
-    void Function(dynamic value)? onFulfilled, [
+    void Function(T value)? onFulfilled, [
     void Function(dynamic error) onRejected,
   ]);
 
