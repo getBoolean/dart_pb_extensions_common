@@ -5,10 +5,6 @@ import 'form_row.dart';
 
 @JS()
 class Section {
-  // id: string
-  //   header?: string
-  //   footer?: string
-  //   rows: () => Promise<FormRow[]>
   external String get id;
   external String? get header;
   external String? get footer;
