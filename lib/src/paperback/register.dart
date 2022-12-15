@@ -1,6 +1,7 @@
 import 'dart:js';
 
 import 'base/source.dart';
+import 'base/tracker.dart';
 import 'models/source_info.dart';
 
 // Solution to allowing interop with class methods
@@ -15,23 +16,23 @@ JsObject Function() registerSource<T extends Source>({
 }) {
   final sourceJsObject = allowInterop(
     () {
-      final source = sourceCreator();
+      final source = SourceFutureToPromiseAdatper(sourceCreator());
       return JsObject.jsify({
-        'getChapterDetails': allowInterop(source.service.getChapterDetails),
-        'getChapters': allowInterop(source.service.getChapters),
-        'getMangaDetails': allowInterop(source.service.getMangaDetails),
-        'getSearchResults': allowInterop(source.service.getSearchResults),
-        'filterUpdatedManga': allowInterop(source.service.filterUpdatedManga),
-        'getCloudflareBypassRequest': allowInterop(source.service.getCloudflareBypassRequest),
-        'getHomePageSections': allowInterop(source.service.getHomePageSections),
-        'getMangaShareUrl': allowInterop(source.service.getMangaShareUrl),
-        'getSearchFields': allowInterop(source.service.getSearchFields),
-        'getSearchTags': allowInterop(source.service.getSearchTags),
-        'getSourceMenu': allowInterop(source.service.getSourceMenu),
-        'getViewMoreItems': allowInterop(source.service.getViewMoreItems),
-        'getWebsiteMangaDirectory': allowInterop(source.service.getWebsiteMangaDirectory),
-        'supportsSearchOperators': allowInterop(source.service.supportsSearchOperators),
-        'supportsTagExclusion': allowInterop(source.service.supportsTagExclusion),
+        'getChapterDetails': allowInterop(source.getChapterDetails),
+        'getChapters': allowInterop(source.getChapters),
+        'getMangaDetails': allowInterop(source.getMangaDetails),
+        'getSearchResults': allowInterop(source.getSearchResults),
+        'filterUpdatedManga': allowInterop(source.filterUpdatedManga),
+        'getCloudflareBypassRequest': allowInterop(source.getCloudflareBypassRequest),
+        'getHomePageSections': allowInterop(source.getHomePageSections),
+        'getMangaShareUrl': allowInterop(source.getMangaShareUrl),
+        'getSearchFields': allowInterop(source.getSearchFields),
+        'getSearchTags': allowInterop(source.getSearchTags),
+        'getSourceMenu': allowInterop(source.getSourceMenu),
+        'getViewMoreItems': allowInterop(source.getViewMoreItems),
+        'getWebsiteMangaDirectory': allowInterop(source.getWebsiteMangaDirectory),
+        'supportsSearchOperators': allowInterop(source.supportsSearchOperators),
+        'supportsTagExclusion': allowInterop(source.supportsTagExclusion),
       });
     },
   );
@@ -39,4 +40,31 @@ JsObject Function() registerSource<T extends Source>({
   context[id] = sourceJsObject;
   context['${id}Info'] = JsObject.jsify(sourceInfo.toMap());
   return sourceJsObject;
+}
+
+/// Registers a [Tracker] with the global [context] so that it can be used by the
+/// Paperback app.
+JsObject Function() registerTracker<T extends Tracker>({
+  required String id,
+  required Tracker Function() trackerCreator,
+}) {
+  final trackerJsObject = allowInterop(
+    () {
+      final tracker = TrackerFutureToPromiseAdapter(trackerCreator());
+      return JsObject.jsify({
+        'getSearchResults': allowInterop(tracker.getSearchResults),
+        'getMangaForm': allowInterop(tracker.getMangaForm),
+        'getTrackedManga': allowInterop(tracker.getTrackedManga),
+        'getSourceMenu': allowInterop(tracker.getSourceMenu),
+        'processActionQueue': allowInterop(tracker.processActionQueue),
+        'getSearchFields': allowInterop(tracker.getSearchFields),
+        'getSearchTags': allowInterop(tracker.getSearchTags),
+        'supportsSearchOperators': allowInterop(tracker.supportsSearchOperators),
+        'supportsTagExclusion': allowInterop(tracker.supportsTagExclusion),
+      });
+    },
+  );
+
+  context[id] = trackerJsObject;
+  return trackerJsObject;
 }
