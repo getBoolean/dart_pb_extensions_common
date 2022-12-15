@@ -1,4 +1,5 @@
 import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/js/js_promise.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/source.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/chapter.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/chapter_details.dart';

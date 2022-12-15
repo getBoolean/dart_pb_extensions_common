@@ -1,4 +1,4 @@
-import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/js/js_promise.dart';
 import 'package:js/js.dart';
 
 @JS()

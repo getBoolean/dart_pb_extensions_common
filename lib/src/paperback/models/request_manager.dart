@@ -1,4 +1,4 @@
-import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/js/js_promise.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/request.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/request_interceptor.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/response.dart';

@@ -1,7 +1,9 @@
 import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/paperback.dart';
+import 'package:dart_pb_extensions_common/src/html/parser.dart';
 
 abstract class Source {
+  final Parser parser = Parser();
   RequestManager get requestManager;
 
   /// Given a mangaID, this function should use a [Request] object's [Request.perform] method

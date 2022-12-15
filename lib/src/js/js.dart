@@ -13,28 +13,6 @@ external Null get undefined;
 external dynamic parseJson(String json);
 
 @JS()
-class Promise<T> {
-  external factory Promise(
-    void Function(
-      dynamic Function(dynamic value) resolve,
-      dynamic Function(dynamic error) reject,
-    )
-        executor,
-  );
-
-  external Promise then(
-    void Function(dynamic value)? onFulfilled, [
-    void Function(dynamic error) onRejected,
-  ]);
-
-  factory Promise.of(FutureOr<T> future) => futureToPromise(Future.value(future));
-}
-
-extension PromiseToFutureExtension<T> on Promise<T> {
-  Future<T> toFuture() => promiseToFuture<T>(this);
-}
-
-@JS()
 abstract class Date {
   external factory Date(dynamic value);
   external int getTime();

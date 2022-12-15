@@ -1,4 +1,4 @@
-import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/js/js_promise.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/requestable.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/paged_results.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/search_field.dart';
