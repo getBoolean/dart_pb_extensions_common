@@ -64,8 +64,8 @@ class TrackerFutureToPromiseAdapter implements JsTracker {
   Promise<Section> getSourceMenu() => Promise.of(tracker.getSourceMenu());
 
   @override
-  Promise<void> processActionQueue(TrackerActionQueue actionQueue) =>
-      Promise.of(tracker.processActionQueue(actionQueue));
+  Promise<void> processActionQueue(JsTrackerActionQueue actionQueue) =>
+      Promise.of(tracker.processActionQueue(TrackerActionQueue(actionQueue)));
 
   @override
   Promise<List<SearchField>>? getSearchFields() => tracker.getSearchFields()?.toPromise();
@@ -105,5 +105,5 @@ abstract class JsTracker implements Requestable, Searchable {
   /// must be marked for retry instead of being left in the queue.
   /// NOTE: Retried actions older than 24 hours will be discarded
   @JS()
-  external Promise<void> processActionQueue(TrackerActionQueue actionQueue);
+  external Promise<void> processActionQueue(JsTrackerActionQueue actionQueue);
 }
