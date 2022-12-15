@@ -39,7 +39,7 @@ TODO: Example usage will be provided once the dart cli is implemented.
 
 ### Parsing
 
-Instead of using porting Cheerio to Dart, we use the [html](https://pub.dev/packages/html) package to
+Instead of using/porting Cheerio to Dart, we use the [html](https://pub.dev/packages/html) package to
 parse HTML. If you prefer to use Cheerio, you can create the JS bindings yourself following the
 [js package's README](https://pub.dev/packages/js). I did not implement it because of the complexity
 of Cheerio's API, it is much easier to use the [html](https://pub.dev/packages/html) package.
