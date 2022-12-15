@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/paperback/models/dynamic_ui/form_row.dart';
 import 'package:js/js.dart';
-
-import 'form_row.dart';
 
 @JS()
 class Select extends FormRowTyped<List<String>> {

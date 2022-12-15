@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/paperback/models/request_manager.dart';
 import 'package:js/js.dart';
-
-import '../models/request_manager.dart';
 
 @JS()
 abstract class Requestable {

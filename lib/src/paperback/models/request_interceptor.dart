@@ -1,7 +1,7 @@
 import 'package:dart_pb_extensions_common/js.dart';
 
-import 'request.dart';
-import 'response.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/request.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/response.dart';
 
 class RequestInterceptor {
   late RequestInterceptorFutureToPromise jsRequestInterceptor;

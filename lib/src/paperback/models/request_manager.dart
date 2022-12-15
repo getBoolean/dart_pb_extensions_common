@@ -1,9 +1,8 @@
+import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/request.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/request_interceptor.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/response.dart';
 import 'package:js/js.dart';
-
-import '../../js/js.dart';
-import 'request.dart';
-import 'request_interceptor.dart';
-import 'response.dart';
 
 @JS()
 abstract class RequestManagerInfo {

@@ -1,7 +1,6 @@
+import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/paperback.dart';
 import 'package:js/js.dart';
-
-import '../../js/js.dart';
-import '../../paperback.dart';
 
 @JS('Manga')
 class MangaInfo {

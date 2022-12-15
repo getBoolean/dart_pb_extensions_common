@@ -1,8 +1,9 @@
+// ignore_for_file: unnecessary_lambdas
+
 import 'dart:async';
 
+import 'package:dart_pb_extensions_common/src/js/js.dart';
 import 'package:js/js.dart';
-
-import 'js.dart';
 
 /// Creates Dart `Future` which completes when [promise] is resolved or
 /// rejected.
@@ -10,12 +11,11 @@ import 'js.dart';
 /// See also:
 ///   - [futureToPromise]
 Future<T> promiseToFuture<T>(Promise<T> promise) {
-  var completer = Completer<T>.sync();
-  promise.then(allowInterop((value) {
-    completer.complete(value);
-  }), allowInterop((error) {
-    completer.completeError(error);
-  }));
+  final completer = Completer<T>.sync();
+  promise.then(
+    allowInterop((value) => completer.complete(value)),
+    allowInterop((error) => completer.completeError(error)),
+  );
   return completer.future;
 }
 

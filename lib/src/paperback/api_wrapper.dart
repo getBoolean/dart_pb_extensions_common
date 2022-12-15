@@ -1,16 +1,15 @@
+import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/source.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/chapter.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/chapter_details.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/home_section.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/manga_info.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/manga_tile.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/manga_updates.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/paged_results.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/search_request.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/tag_section.dart';
 import 'package:js/js.dart';
-
-import '../js/js.dart';
-import 'base/source.dart';
-import 'models/chapter.dart';
-import 'models/chapter_details.dart';
-import 'models/home_section.dart';
-import 'models/manga_info.dart';
-import 'models/manga_tile.dart';
-import 'models/manga_updates.dart';
-import 'models/paged_results.dart';
-import 'models/search_request.dart';
-import 'models/tag_section.dart';
 
 @JS()
 class APIWrapper {

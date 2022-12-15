@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/paperback/models/manga_info.dart';
 import 'package:js/js.dart';
-
-import 'manga_info.dart';
 
 @JS()
 class SourceManga {

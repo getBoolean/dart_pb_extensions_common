@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/paperback.dart';
 import 'package:js/js.dart';
-
-import '../../paperback.dart';
 
 @JS()
 class HomeSection {
@@ -47,10 +46,10 @@ class HomeSection {
 }
 
 enum HomeSectionType {
-  singleRowNormal("singleRowNormal"),
-  singleRowLarge("singleRowLarge"),
-  doubleRow("doubleRow"),
-  featured("featured");
+  singleRowNormal('singleRowNormal'),
+  singleRowLarge('singleRowLarge'),
+  doubleRow('doubleRow'),
+  featured('featured');
 
   final String value;
 

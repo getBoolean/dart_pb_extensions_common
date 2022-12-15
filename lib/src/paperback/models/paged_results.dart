@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/paperback.dart';
 import 'package:js/js.dart';
-
-import '../../paperback.dart';
 
 @JS()
 class PagedResults {

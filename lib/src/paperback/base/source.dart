@@ -1,5 +1,5 @@
-import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
+import 'package:dart_pb_extensions_common/paperback.dart';
 
 abstract class Source {
   RequestManager get requestManager;

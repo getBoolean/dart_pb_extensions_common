@@ -1,7 +1,6 @@
+import 'package:dart_pb_extensions_common/src/paperback/models/raw_data.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/request.dart';
 import 'package:js/js.dart';
-
-import 'raw_data.dart';
-import 'request.dart';
 
 @JS('paperback-extensions-common.Response')
 class Response {

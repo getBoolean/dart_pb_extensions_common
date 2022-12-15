@@ -1,7 +1,6 @@
+import 'package:dart_pb_extensions_common/src/js/js.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/dynamic_ui/section.dart';
 import 'package:js/js.dart';
-
-import '../../../js/js.dart';
-import 'section.dart';
 
 @JS()
 class Form {

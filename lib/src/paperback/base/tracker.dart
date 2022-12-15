@@ -1,16 +1,15 @@
 import 'package:dart_pb_extensions_common/js.dart';
-import 'package:dart_pb_extensions_common/src/paperback/models/tag_section.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/requestable.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/searchable.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/dynamic_ui/form.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/dynamic_ui/section.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/paged_results.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/request_manager.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/search_field.dart';
-
-import '../models/dynamic_ui/form.dart';
-import '../models/dynamic_ui/section.dart';
-import '../models/paged_results.dart';
-import '../models/request_manager.dart';
-import '../models/search_request.dart';
-import '../models/tracked_manga.dart';
-import '../models/tracker_action_queue.dart';
-import 'requestable.dart';
-import 'searchable.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/search_request.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/tag_section.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/tracked_manga.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/tracker_action_queue.dart';
 
 abstract class Tracker {
   /// Manages the ratelimits and the number of requests that can be done per second

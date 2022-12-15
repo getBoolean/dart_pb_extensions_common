@@ -10,7 +10,7 @@ import 'dart:typed_data';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
-@JS("Object.keys")
+@JS('Object.keys')
 external List<String> _keys(Object? object);
 
 /// Invokes [callback] for each key/value pair in [object].
@@ -20,7 +20,7 @@ void jsForEach(Object object, void Function(String key, Object? value) callback)
   }
 }
 
-@JS("Object.defineProperty")
+@JS('Object.defineProperty')
 external void _defineProperty(Object object, String name, _PropertyDescriptor prototype);
 
 @JS()
@@ -64,7 +64,7 @@ Function allowInteropCaptureThisNamed(String name, Function function) {
   return function;
 }
 
-@JS("Object.getOwnPropertyNames")
+@JS('Object.getOwnPropertyNames')
 external List<Object?> _getOwnPropertyNames(Object object);
 
 /// Hide Dart-internal properties on [object].
@@ -94,7 +94,7 @@ Uint8List utf8Encode(String text) => _buffer(text, 'utf8');
 
 /// Converts a JavaScript record into a map from property names to their values.
 Map<String, Object?> objectToMap(Object object) {
-  var map = <String, Object?>{};
+  final map = <String, Object?>{};
   jsForEach(object, (key, value) => map[key] = value);
   return map;
 }

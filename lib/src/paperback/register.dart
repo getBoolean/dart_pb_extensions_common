@@ -1,8 +1,8 @@
 import 'dart:js';
 
-import 'base/source.dart';
-import 'base/tracker.dart';
-import 'models/source_info.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/source.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/tracker.dart';
+import 'package:dart_pb_extensions_common/src/paperback/models/source_info.dart';
 
 // Solution to allowing interop with class methods
 // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247

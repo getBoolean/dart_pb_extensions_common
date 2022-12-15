@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/paperback/models/source_tag.dart';
 import 'package:js/js.dart';
-
-import 'source_tag.dart';
 
 class SourceInfo {
   late final JsSourceInfo jsSourceInfo;
@@ -160,9 +159,9 @@ class JsSourceInfo {
 
 /// A content rating to be attributed to each source.
 enum ContentRating {
-  everyone("EVERYONE"),
-  mature("MATURE"),
-  adult("ADULT");
+  everyone('EVERYONE'),
+  mature('MATURE'),
+  adult('ADULT');
 
   final String value;
 

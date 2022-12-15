@@ -1,6 +1,5 @@
+import 'package:dart_pb_extensions_common/src/js/js.dart';
 import 'package:js/js.dart';
-
-import '../../js/js.dart';
 
 @JS()
 abstract class SourceStateManagerInfo {}
