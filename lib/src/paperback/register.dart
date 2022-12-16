@@ -11,7 +11,7 @@ import 'package:js/js_util.dart';
 
 /// Registers a [Source] with the global [context] so that it can be used by the
 /// Paperback app.
-dynamic Function() register<T extends Registerable>({
+Object Function() register<T extends Registerable>({
   required String id,
   required Registerable Function() creator,
   required SourceInfo info,
