@@ -20,6 +20,22 @@ abstract class Tracker extends Registerable {
   /// This is also used to fetch pages when a chapter is downloading
   RequestManager get requestManager;
 
+  @override
+  Object register() {
+    final tracker = TrackerFutureToPromiseAdapter(this);
+    return jsify({
+      'getSearchResults': allowInterop(tracker.getSearchResults),
+      'getMangaForm': allowInterop(tracker.getMangaForm),
+      'getTrackedManga': allowInterop(tracker.getTrackedManga),
+      'getSourceMenu': allowInterop(tracker.getSourceMenu),
+      'processActionQueue': allowInterop(tracker.processActionQueue),
+      'getSearchFields': allowInterop(tracker.getSearchFields),
+      'getSearchTags': allowInterop(tracker.getSearchTags),
+      'supportsSearchOperators': allowInterop(tracker.supportsSearchOperators),
+      'supportsTagExclusion': allowInterop(tracker.supportsTagExclusion),
+    });
+  }
+
   Future<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
 
   /// This cannot be async since the app expects a form as soon as this function is called
