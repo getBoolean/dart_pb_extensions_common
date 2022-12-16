@@ -1,8 +1,9 @@
 import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/src/html/parser.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/registerable.dart';
 
-abstract class Source {
+abstract class Source extends Registerable {
   final Parser parser = Parser();
   RequestManager get requestManager;
 

@@ -4,7 +4,6 @@
 
 library dart_pb_extensions_common.utils;
 
-import 'dart:js_util';
 import 'dart:typed_data';
 
 import 'package:js/js.dart';

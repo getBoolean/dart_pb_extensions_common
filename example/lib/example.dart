@@ -2,10 +2,10 @@ import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
 
 void main() {
-  registerSource(
+  register(
     id: kGuyaId,
-    sourceInfo: guyaInfo,
-    sourceCreator: () => Guya(),
+    info: guyaInfo,
+    creator: () => Guya(),
   );
 }
 

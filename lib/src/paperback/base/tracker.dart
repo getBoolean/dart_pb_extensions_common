@@ -1,5 +1,6 @@
 import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/src/html/parser.dart';
+import 'package:dart_pb_extensions_common/src/paperback/base/registerable.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/requestable.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/searchable.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/dynamic_ui/form.dart';
@@ -12,7 +13,7 @@ import 'package:dart_pb_extensions_common/src/paperback/models/tag_section.dart'
 import 'package:dart_pb_extensions_common/src/paperback/models/tracked_manga.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/tracker_action_queue.dart';
 
-abstract class Tracker {
+abstract class Tracker extends Registerable {
   final Parser parser = Parser();
 
   /// Manages the ratelimits and the number of requests that can be done per second
