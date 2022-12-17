@@ -1,10 +1,9 @@
-import 'dart:js' show context;
+import 'dart:js' show JsObject, context;
 
 import 'package:dart_pb_extensions_common/src/paperback/base/registerable.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/source.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/source_info.dart';
 import 'package:js/js.dart';
-import 'package:js/js_util.dart';
 
 const kCliPrefix = '\$SourceId\$';
 
@@ -24,6 +23,6 @@ Object Function() register<T extends Registerable>({
 
   context[kCliPrefix] = id;
   context[id] = jsObject;
-  context['${id}Info'] = jsify(info.toMap());
+  context['${id}Info'] = JsObject.jsify(info.toMap());
   return jsObject;
 }

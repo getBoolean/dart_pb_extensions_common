@@ -1,3 +1,5 @@
+import 'dart:js' show JsObject;
+
 import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/src/html/parser.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/registerable.dart';
@@ -21,9 +23,9 @@ abstract class Tracker extends Registerable {
   RequestManager get requestManager;
 
   @override
-  Object register() {
+  JsObject register() {
     final tracker = TrackerFutureToPromiseAdapter(this);
-    return jsify({
+    return JsObject.jsify({
       'getSearchResults': allowInterop(tracker.getSearchResults),
       'getMangaForm': allowInterop(tracker.getMangaForm),
       'getTrackedManga': allowInterop(tracker.getTrackedManga),

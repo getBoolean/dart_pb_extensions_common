@@ -1,3 +1,5 @@
+import 'dart:js' show JsObject;
+
 abstract class Registerable {
-  Object register();
+  JsObject register();
 }

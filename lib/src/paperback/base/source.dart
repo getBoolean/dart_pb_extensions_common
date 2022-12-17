@@ -1,3 +1,5 @@
+import 'dart:js' show JsObject;
+
 import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/src/html/parser.dart';
@@ -8,9 +10,9 @@ abstract class Source extends Registerable {
   RequestManager get requestManager;
 
   @override
-  Object register() {
+  JsObject register() {
     final source = SourceFutureToPromiseAdatper(this);
-    return jsify({
+    return JsObject.jsify({
       'getChapterDetails': allowInterop(source.getChapterDetails),
       'getChapters': allowInterop(source.getChapters),
       'getMangaDetails': allowInterop(source.getMangaDetails),
