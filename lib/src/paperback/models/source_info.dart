@@ -85,7 +85,7 @@ class SourceInfo {
         'desc': jsSourceInfo.description,
         'contentRating': jsSourceInfo.contentRating,
         'websiteBaseURL': jsSourceInfo.websiteBaseURL,
-        'authorWebsite': jsSourceInfo.authorWebsite,
+        'website': jsSourceInfo.authorWebsite,
         'language': jsSourceInfo.language,
         'tags': jsSourceInfo.sourceTags,
       };
