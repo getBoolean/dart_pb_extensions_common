@@ -6,6 +6,8 @@ import 'package:dart_pb_extensions_common/src/paperback/models/source_info.dart'
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
+const kCliPrefix = '\$SourceId\$';
+
 // Solution to allowing interop with class methods
 // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
 
@@ -20,6 +22,7 @@ Object Function() register<T extends Registerable>({
     () => creator().register(),
   );
 
+  context[kCliPrefix] = id;
   context[id] = jsObject;
   context['${id}Info'] = jsify(info.toMap());
   return jsObject;
