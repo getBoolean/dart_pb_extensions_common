@@ -82,12 +82,12 @@ class SourceInfo {
         'name': jsSourceInfo.name,
         'icon': jsSourceInfo.icon,
         'author': jsSourceInfo.author,
-        'description': jsSourceInfo.description,
+        'desc': jsSourceInfo.description,
         'contentRating': jsSourceInfo.contentRating,
         'websiteBaseURL': jsSourceInfo.websiteBaseURL,
         'authorWebsite': jsSourceInfo.authorWebsite,
         'language': jsSourceInfo.language,
-        'sourceTags': jsSourceInfo.sourceTags,
+        'tags': jsSourceInfo.sourceTags,
       };
 }
 
