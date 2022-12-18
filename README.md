@@ -11,7 +11,10 @@ The following major tasks are still needed to be completed:
   - [x] Register any source and its methods with `allowInterop`
 - [x] Allow source info to be accessed from JavaScript
   - [x] Register any source info with dart:js' `context`
-- [ ] Dart Toolchain CLI for Bundle and Serve
+- [ ] Dart Toolchain CLI
+  - [x] Bundle
+  - [ ] Serve
+  - [ ] Homepage generation
 - [ ] Testing
 - [ ] Documentation
 - [ ] Template repository
@@ -23,7 +26,7 @@ Write extensions using Dart, a modern language with a strick type system and sou
 The only exception is that the return types of methods annotated with `@JS()` are not validated
 during runtime, so an incorrect type may "leak" into other Dart code and violate type system guarantees.
 For any calls into JavaScript code that are not known to be safe in their return values, validate
-the results manually with is checks.
+the results manually with `is` checks.
 
 ## About Sources
 
