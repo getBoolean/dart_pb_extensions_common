@@ -13,7 +13,7 @@ The following major tasks are still needed to be completed:
   - [x] Register any source info with dart:js' `context`
 - [ ] Dart Toolchain CLI
   - [x] Bundle
-  - [ ] Serve
+  - [x] Serve
   - [ ] Homepage generation
 - [ ] Testing
 - [ ] Documentation
