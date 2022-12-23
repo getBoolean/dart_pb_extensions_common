@@ -19,6 +19,10 @@ While the majority of major tasks have been completed, there is still a number o
 - [ ] Documentation
 - [ ] Template repository
 
+## Paperback Extensions Common
+
+Common models for extensions used by Paperback v0.6 - v0.7, written in Dart.
+
 ## Features
 
 Write extensions using Dart, a modern language with a strick type system and sound null safety.
