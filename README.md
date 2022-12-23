@@ -2,7 +2,7 @@
 
 Status: **In Development**
 
-The following major tasks are still needed to be completed:
+While the majority of major tasks have been completed, there is still a number of bugs to be fixed
 
 - [x] Dart bindings for the Paperback Source models
 - [x] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
@@ -11,10 +11,10 @@ The following major tasks are still needed to be completed:
   - [x] Register any source and its methods with `allowInterop`
 - [x] Allow source info to be accessed from JavaScript
   - [x] Register any source info with dart:js' `context`
-- [ ] Dart Toolchain CLI
+- [x] Dart Toolchain CLI
   - [x] Bundle
   - [x] Serve
-  - [ ] Homepage generation
+  - [x] Homepage generation
 - [ ] Testing
 - [ ] Documentation
 - [ ] Template repository
