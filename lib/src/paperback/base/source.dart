@@ -78,7 +78,7 @@ abstract class Source extends Registerable {
   /// - [time]: This function should find all manga which has been updated between the current time, and this parameter's reported time.
   ///           After this time has been passed, the system should stop parsing and return
   Future<void> filterUpdatedMangas(
-          void Function(MangaUpdates updates) updates, Date time, List<String> ids) =>
+          void Function(MangaUpdates updates) mangaUpdatesFoundCallback, Date time, List<String> ids) =>
       Future.value();
 
   /// (OPTIONAL METHOD) A function which should readonly all of the available homepage sections for a given source, and return a [HomeSection] object.
@@ -151,8 +151,8 @@ class SourceFutureToPromiseAdatper implements JsSource {
 
   @override
   Promise<void>? filterUpdatedManga(
-          void Function(MangaUpdates updates) updates, Date time, List<String> ids) =>
-      source.filterUpdatedMangas(updates, time, ids).toPromise();
+          void Function(MangaUpdates updates) mangaUpdatesFoundCallback, Date time, List<String> ids) =>
+      source.filterUpdatedMangas(mangaUpdatesFoundCallback, time, ids).toPromise();
 
   @override
   Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId) =>
@@ -302,7 +302,7 @@ abstract class JsSource implements Requestable, Searchable {
   ///           After this time has been passed, the system should stop parsing and return
   @JS()
   external Promise<void>? filterUpdatedManga(
-    void Function(MangaUpdates updates) updates,
+    void Function(MangaUpdates updates) mangaUpdatesFoundCallback,
     Date time,
     List<String> ids,
   );
