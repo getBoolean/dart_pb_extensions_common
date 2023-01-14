@@ -94,7 +94,7 @@ class Guya extends Source {
 
   @override
   Future<void> filterUpdatedMangas(
-    void Function(MangaUpdates updates) updates,
+    void Function(MangaUpdates updates) mangaUpdatesFoundCallback,
     Date time,
     List<String> ids,
   ) {
