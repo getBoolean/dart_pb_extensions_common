@@ -21,17 +21,14 @@ typedef RegisterableCreator = Registerable Function();
 
 /// Registers a [Source] with the global [context] so that it can be used by the
 /// Paperback app.
-void register<T extends Registerable>(
-  Map<String, Tuple<SourceInfo, RegisterableCreator>> registerables,
-) {
-  for (final entry in registerables.entries) {
-    final String id = entry.key;
-    final SourceInfo info = entry.value.first;
-    final RegisterableCreator extensionCreator = entry.value.second;
-    final sourceExtensionJsClass = allowInterop(() => extensionCreator().register());
+void register<T extends Registerable>({
+  required String id,
+  required SourceInfo info,
+  required RegisterableCreator creator,
+}) {
+  final sourceExtensionJsClass = allowInterop(() => creator().register());
 
-    context['Sources.$kCliPrefix'] = id;
-    context['Sources.${id}Info'] = JsObject.jsify(info.toMap());
-    context['Sources.$id'] = sourceExtensionJsClass;
-  }
+  context['Sources.$kCliPrefix'] = id;
+  context['Sources.${id}Info'] = JsObject.jsify(info.toMap());
+  context['Sources.$id'] = sourceExtensionJsClass;
 }

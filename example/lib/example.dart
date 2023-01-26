@@ -2,9 +2,7 @@ import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
 
 void main() {
-  register({
-    kGuyaId: Tuple(guyaInfo, Guya.new),
-  });
+  register(id: kGuyaId, info: guyaInfo, creator: Guya.new);
 }
 
 const kGuyaId = 'Guya';
