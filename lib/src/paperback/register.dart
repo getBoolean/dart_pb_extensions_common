@@ -14,33 +14,24 @@ class Tuple<K, V> {
   const Tuple(this.first, this.second);
 }
 
+typedef RegisterableCreator = Registerable Function();
+
 // Solution to allowing interop with class methods
 // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
 
 /// Registers a [Source] with the global [context] so that it can be used by the
 /// Paperback app.
-JsObject register<T extends Registerable>(
-  Map<String, Tuple<SourceInfo, Registerable Function()>> registerables,
+void register<T extends Registerable>(
+  Map<String, Tuple<SourceInfo, RegisterableCreator>> registerables,
 ) {
-  final sourceJsClass = JsObject.jsify(
-      registerables.entries.fold<Map<String, Object>>({}, (previousSourceMap, entry) {
-    final id = entry.key;
-    final info = entry.value.first;
-    final extensionCreator = entry.value.second;
-    final sourceExtensionJsClass = allowInterop(
-      () => extensionCreator().register(),
-    );
+  for (final entry in registerables.entries) {
+    final String id = entry.key;
+    final SourceInfo info = entry.value.first;
+    final RegisterableCreator extensionCreator = entry.value.second;
+    final sourceExtensionJsClass = allowInterop(() => extensionCreator().register());
 
-    return previousSourceMap
-      ..addAll({
-        // TODO: Find another way to get the source id. This might break if multiple sources are bundled
-        kCliPrefix: id,
-        '${id}Info': JsObject.jsify(info.toMap()),
-        id: sourceExtensionJsClass,
-      });
-  }));
-
-  context['Sources'] = sourceJsClass;
-
-  return sourceJsClass;
+    context['Sources.$kCliPrefix'] = id;
+    context['Sources.${id}Info'] = JsObject.jsify(info.toMap());
+    context['Sources.$id'] = sourceExtensionJsClass;
+  }
 }
