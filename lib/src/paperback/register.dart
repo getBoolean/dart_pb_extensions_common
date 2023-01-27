@@ -14,7 +14,7 @@ class Tuple<K, V> {
   const Tuple(this.first, this.second);
 }
 
-typedef RegisterableCreator = Registerable Function();
+typedef RegisterableCreator<T extends Registerable> = T Function();
 
 // Solution to allowing interop with class methods
 // https://github.com/dart-lang/sdk/issues/47855#issuecomment-1069311247
@@ -24,7 +24,7 @@ typedef RegisterableCreator = Registerable Function();
 void register<T extends Registerable>({
   required String id,
   required SourceInfo info,
-  required RegisterableCreator creator,
+  required RegisterableCreator<T> creator,
 }) {
   final sourceExtensionJsClass = allowInterop(() => creator().register());
 
