@@ -80,12 +80,12 @@ class Guya extends Source {
 
   @override
   Future<List<Chapter>> getChapters(String mangaId) async {
-    throw UnimplementedError();
+    throw JsError('UnimplementedError');
   }
 
   @override
   Future<ChapterDetails> getChapterDetails(String mangaId, String chapterId) async {
-    throw UnimplementedError();
+    throw JsError('UnimplementedError');
   }
 
   @override
@@ -94,12 +94,12 @@ class Guya extends Source {
     Date time,
     List<String> ids,
   ) {
-    throw UnimplementedError();
+    throw JsError('UnimplementedError');
   }
 
   @override
   Future<PagedResults> getSearchResults(SearchRequest query, Object? metadata) async {
-    throw UnimplementedError();
+    throw JsError('UnimplementedError');
   }
 }
 
