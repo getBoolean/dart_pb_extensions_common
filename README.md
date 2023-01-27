@@ -18,6 +18,7 @@ While the majority of major tasks have been completed, there is still a number o
 - [ ] Testing
 - [ ] Documentation
 - [ ] Template repository
+- [ ] Run on iOS' JavaScriptCore
 
 ## Paperback Extensions Common
 
