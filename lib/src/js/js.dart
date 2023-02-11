@@ -73,7 +73,8 @@ abstract class Atomics {
   external static int sub(List<int> typedArray, int index, int value);
 
   @JS('wait')
-  external static String wait(List<int> typedArray, int index, int value, [num timeout]);
+  external static String wait(List<int> typedArray, int index, int value,
+      [num timeout]);
 
   @JS('xor')
   external static int xor(List<int> typedArray, int index, int value);

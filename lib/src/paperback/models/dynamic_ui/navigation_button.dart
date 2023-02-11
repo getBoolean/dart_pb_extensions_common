@@ -31,4 +31,5 @@ class _CreateNavigationButtonOptions {
 }
 
 @JS('createNavigationButton')
-external NavigationButton _createNavigationButton(_CreateNavigationButtonOptions info);
+external NavigationButton _createNavigationButton(
+    _CreateNavigationButtonOptions info);

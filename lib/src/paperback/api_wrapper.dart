@@ -58,5 +58,6 @@ class APIWrapper {
     int resultPageLimiter = 3,
   ]);
 
-  external Promise<PagedResults?> getWebsiteMangaDirectory(JsSource source, Object? metadata);
+  external Promise<PagedResults?> getWebsiteMangaDirectory(
+      JsSource source, Object? metadata);
 }

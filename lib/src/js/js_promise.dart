@@ -51,5 +51,6 @@ class Promise<T> {
     void Function(dynamic error) onRejected,
   ]);
 
-  factory Promise.of(FutureOr<T> future) => futureToPromise(Future.value(future));
+  factory Promise.of(FutureOr<T> future) =>
+      futureToPromise(Future.value(future));
 }

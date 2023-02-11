@@ -7,7 +7,8 @@ class SourceStateManager {
   Future<void> store(String key, Object value) =>
       jsSourceStateManager.store.call(key, value).toFuture();
 
-  Future<Object?> retrieve(String key) => jsSourceStateManager.retrieve.call(key).toFuture();
+  Future<Object?> retrieve(String key) =>
+      jsSourceStateManager.retrieve.call(key).toFuture();
 
   SourceKeychain get keychain => SourceKeychain(jsSourceStateManager.keychain);
 }
@@ -20,7 +21,8 @@ class SourceKeychain {
   Future<void> store(String key, Object value) =>
       jsSourceKeychain.store.call(key, value).toFuture();
 
-  Future<Object?> retrieve(String key) => jsSourceKeychain.retrieve.call(key).toFuture();
+  Future<Object?> retrieve(String key) =>
+      jsSourceKeychain.retrieve.call(key).toFuture();
 }
 
 @JS()
@@ -32,7 +34,8 @@ class JsSourceStateManager extends SourceStateManagerInfo {
   external Promise<Object?> Function(String key) get retrieve;
   external JsSourceKeychain get keychain;
 
-  factory JsSourceStateManager() => _createSourceStateManager(_CreateSourceStateManagerInfo());
+  factory JsSourceStateManager() =>
+      _createSourceStateManager(_CreateSourceStateManagerInfo());
 }
 
 @JS('SourceKeychain')

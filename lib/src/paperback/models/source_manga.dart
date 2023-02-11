@@ -10,7 +10,8 @@ class SourceManga {
     required String id,
     required MangaInfo mangaInfo,
   }) =>
-      _createSourceManga(_CreateSourceMangaOptions(id: id, mangaInfo: mangaInfo));
+      _createSourceManga(
+          _CreateSourceMangaOptions(id: id, mangaInfo: mangaInfo));
 }
 
 @JS()

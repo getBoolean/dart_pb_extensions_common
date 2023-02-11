@@ -25,4 +25,5 @@ class _CreateMultilineLabelOptions {
 }
 
 @JS('createMultilineLabel')
-external MultilineLabel _createMultilineLabel(_CreateMultilineLabelOptions info);
+external MultilineLabel _createMultilineLabel(
+    _CreateMultilineLabelOptions info);

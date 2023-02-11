@@ -38,7 +38,8 @@ class CreateTagOptions {
   /// - [id]: An internal identifier of this tag
   /// - [label]: A user-presentable representation of how people read the tag. This
   /// may be the same as [id]
-  external factory CreateTagOptions({required String id, required String label});
+  external factory CreateTagOptions(
+      {required String id, required String label});
 }
 
 @JS()

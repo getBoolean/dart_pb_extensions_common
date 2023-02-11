@@ -49,11 +49,13 @@ class Guya extends Source {
 
   @override
   Future<MangaInfo> getMangaDetails(String mangaId) async {
-    final request = Request(url: '$kGuyaApiBase/series_page_data/$mangaId', method: 'GET');
+    final request =
+        Request(url: '$kGuyaApiBase/series_page_data/$mangaId', method: 'GET');
     final response = await requestManager.schedule(request, 1);
 
     final responseData = response.data;
-    final dynamic data = (responseData is String) ? parseJson(responseData) : response.data;
+    final dynamic data =
+        (responseData is String) ? parseJson(responseData) : response.data;
     if (data is! Map<String, Object?>) {
       throw JsError('Invalid response data: $responseData');
     }
@@ -84,7 +86,8 @@ class Guya extends Source {
   }
 
   @override
-  Future<ChapterDetails> getChapterDetails(String mangaId, String chapterId) async {
+  Future<ChapterDetails> getChapterDetails(
+      String mangaId, String chapterId) async {
     throw JsError('UnimplementedError');
   }
 
@@ -98,7 +101,8 @@ class Guya extends Source {
   }
 
   @override
-  Future<PagedResults> getSearchResults(SearchRequest query, Object? metadata) async {
+  Future<PagedResults> getSearchResults(
+      SearchRequest query, Object? metadata) async {
     throw JsError('UnimplementedError');
   }
 }

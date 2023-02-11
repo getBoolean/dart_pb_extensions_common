@@ -25,7 +25,9 @@ class RequestManager {
   }) : jsRequestManager = JsRequestManager(
           requestsPerSecond: requestsPerSecond,
           requestTimeout: requestTimeout,
-          interceptor: interceptor != null ? RequestInterceptorFutureToPromise(interceptor) : null,
+          interceptor: interceptor != null
+              ? RequestInterceptorFutureToPromise(interceptor)
+              : null,
         );
 }
 

@@ -26,26 +26,17 @@ abstract class Tracker extends Registerable {
   JsObject register() {
     final tracker = TrackerFutureToPromiseAdapter(this);
     return JsObject.jsify({
-      'getSearchResults': allowInteropCaptureThisNamed(
-        'getSearchResults',
-        tracker.getSearchResults,
-      ),
-      'getMangaForm':
-          allowInteropCaptureThisNamed('getMangaForm', tracker.getMangaForm),
-      'getTrackedManga': allowInteropCaptureThisNamed(
-          'getTrackedManga', tracker.getTrackedManga),
-      'getSourceMenu':
-          allowInteropCaptureThisNamed('getSourceMenu', tracker.getSourceMenu),
-      'processActionQueue': allowInteropCaptureThisNamed(
-          'processActionQueue', tracker.processActionQueue),
-      'getSearchFields': allowInteropCaptureThisNamed(
-          'getSearchFields', tracker.getSearchFields),
-      'getSearchTags':
-          allowInteropCaptureThisNamed('getSearchTags', tracker.getSearchTags),
-      'supportsSearchOperators': allowInteropCaptureThisNamed(
-          'supportsSearchOperators', tracker.supportsSearchOperators),
-      'supportsTagExclusion': allowInteropCaptureThisNamed(
-          'supportsTagExclusion', tracker.supportsTagExclusion),
+      'getSearchResults': allowInteropCaptureThis(tracker.getSearchResults),
+      'getMangaForm': allowInteropCaptureThis(tracker.getMangaForm),
+      'getTrackedManga': allowInteropCaptureThis(tracker.getTrackedManga),
+      'getSourceMenu': allowInteropCaptureThis(tracker.getSourceMenu),
+      'processActionQueue': allowInteropCaptureThis(tracker.processActionQueue),
+      'getSearchFields': allowInteropCaptureThis(tracker.getSearchFields),
+      'getSearchTags': allowInteropCaptureThis(tracker.getSearchTags),
+      'supportsSearchOperators':
+          allowInteropCaptureThis(tracker.supportsSearchOperators),
+      'supportsTagExclusion':
+          allowInteropCaptureThis(tracker.supportsTagExclusion),
     });
   }
 

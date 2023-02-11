@@ -25,9 +25,12 @@ class TrackerActionQueue {
 
 @JS('TrackerActionQueue')
 class JsTrackerActionQueue {
-  external Promise<List<TrackedMangaChapterReadAction>> queuedChapterReadActions();
-  external Promise<void> retryChapterReadAction(TrackedMangaChapterReadAction action);
-  external Promise<void> discardChapterReadAction(TrackedMangaChapterReadAction action);
+  external Promise<List<TrackedMangaChapterReadAction>>
+      queuedChapterReadActions();
+  external Promise<void> retryChapterReadAction(
+      TrackedMangaChapterReadAction action);
+  external Promise<void> discardChapterReadAction(
+      TrackedMangaChapterReadAction action);
   external Promise<void> retryAllChapterReadAction();
   external Promise<void> discardAllChapterReadAction();
 }

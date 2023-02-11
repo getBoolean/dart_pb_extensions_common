@@ -13,36 +13,26 @@ abstract class Source extends Registerable {
   JsObject register() {
     final source = SourceFutureToPromiseAdatper(this);
     return JsObject.jsify({
-      'getChapterDetails': allowInteropCaptureThisNamed(
-          'getChapterDetails', source.getChapterDetails),
-      'getChapters':
-          allowInteropCaptureThisNamed('getChapters', source.getChapters),
-      'getMangaDetails': allowInteropCaptureThisNamed(
-          'getMangaDetails', source.getMangaDetails),
-      'getSearchResults': allowInteropCaptureThisNamed(
-          'getSearchResults', source.getSearchResults),
-      'filterUpdatedManga': allowInteropCaptureThisNamed(
-          'filterUpdatedManga', source.filterUpdatedManga),
-      'getCloudflareBypassRequest': allowInteropCaptureThisNamed(
-          'getCloudflareBypassRequest', source.getCloudflareBypassRequest),
-      'getHomePageSections': allowInteropCaptureThisNamed(
-          'getHomePageSections', source.getHomePageSections),
-      'getMangaShareUrl': allowInteropCaptureThisNamed(
-          'getMangaShareUrl', source.getMangaShareUrl),
-      'getSearchFields': allowInteropCaptureThisNamed(
-          'getSearchFields', source.getSearchFields),
-      'getSearchTags':
-          allowInteropCaptureThisNamed('getSearchTags', source.getSearchTags),
-      'getSourceMenu':
-          allowInteropCaptureThisNamed('getSourceMenu', source.getSourceMenu),
-      'getViewMoreItems': allowInteropCaptureThisNamed(
-          'getViewMoreItems', source.getViewMoreItems),
-      'getWebsiteMangaDirectory': allowInteropCaptureThisNamed(
-          'getWebsiteMangaDirectory', source.getWebsiteMangaDirectory),
-      'supportsSearchOperators': allowInteropCaptureThisNamed(
-          'supportsSearchOperators', source.supportsSearchOperators),
-      'supportsTagExclusion': allowInteropCaptureThisNamed(
-          'supportsTagExclusion', source.supportsTagExclusion),
+      'getChapterDetails': allowInteropCaptureThis(source.getChapterDetails),
+      'getChapters': allowInteropCaptureThis(source.getChapters),
+      'getMangaDetails': allowInteropCaptureThis(source.getMangaDetails),
+      'getSearchResults': allowInteropCaptureThis(source.getSearchResults),
+      'filterUpdatedManga': allowInteropCaptureThis(source.filterUpdatedManga),
+      'getCloudflareBypassRequest':
+          allowInteropCaptureThis(source.getCloudflareBypassRequest),
+      'getHomePageSections':
+          allowInteropCaptureThis(source.getHomePageSections),
+      'getMangaShareUrl': allowInteropCaptureThis(source.getMangaShareUrl),
+      'getSearchFields': allowInteropCaptureThis(source.getSearchFields),
+      'getSearchTags': allowInteropCaptureThis(source.getSearchTags),
+      'getSourceMenu': allowInteropCaptureThis(source.getSourceMenu),
+      'getViewMoreItems': allowInteropCaptureThis(source.getViewMoreItems),
+      'getWebsiteMangaDirectory':
+          allowInteropCaptureThis(source.getWebsiteMangaDirectory),
+      'supportsSearchOperators':
+          allowInteropCaptureThis(source.supportsSearchOperators),
+      'supportsTagExclusion':
+          allowInteropCaptureThis(source.supportsTagExclusion),
     });
   }
 

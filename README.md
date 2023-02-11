@@ -6,9 +6,9 @@ While the majority of major tasks have been completed, there is still a number o
 
 - [x] Dart bindings for the Paperback Source models
 - [x] Make `Source` methods return `Future` instead of JS's `Promise`, which would allow the keyword
-`await` to be used.
-- [x] Allow certain class methods to interop with JavaScript via `allowInteropCaptureThisNamed`
-  - [x] Register any source and its methods with `allowInteropCaptureThisNamed`
+      `await` to be used.
+- [x] Allow certain class methods to interop with JavaScript via `allowInteropCaptureThis`
+  - [x] Register any source and its methods with `allowInteropCaptureThis`
 - [x] Allow source info to be accessed from JavaScript
   - [x] Register any source info with dart:js' `context`
 - [x] Dart Toolchain CLI
