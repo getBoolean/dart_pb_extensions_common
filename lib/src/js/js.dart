@@ -2,10 +2,6 @@ library dart_pb_extensions_common.js;
 
 import 'package:js/js.dart';
 
-@JS()
-// ignore: prefer_void_to_null
-external Null get undefined;
-
 @JS('JSON.parse')
 external dynamic parseJson(String json);
 
@@ -23,12 +19,6 @@ class Record<K, V> {
   external V get second;
 }
 
-/// Returns a list of keys in a JavaScript [object].
-///
-/// This function binds to JavaScript `Object.keys()`.
-@JS('Object.keys')
-external List<String> objectKeys(object);
-
 /// JavaScript Error object.
 @JS('Error')
 abstract class JsError {
@@ -36,52 +26,4 @@ abstract class JsError {
 
   external String get message;
   external String get stack;
-}
-
-/// A namespace for JavaScript's `Atomics` functions.
-@JS()
-abstract class Atomics {
-  @JS('add')
-  external static int add(List<int> typedArray, int index, int value);
-
-  @JS('and')
-  external static int and(List<int> typedArray, int index, int value);
-
-  @JS('compareExchange')
-  external static int compareExchange(
-      List<int> typedArray, int index, int expectedValue, int replacementValue);
-
-  @JS('exchange')
-  external static int exchange(List<int> typedArray, int index, int value);
-
-  @JS('isLockFree')
-  external static bool isLockFree(int size);
-
-  @JS('load')
-  external static int load(List<int> typedArray, int index);
-
-  @JS('notify')
-  external static int notify(List<int> typedArray, int index, [int count]);
-
-  @JS('or')
-  external static int or(List<int> typedArray, int index, int value);
-
-  @JS('store')
-  external static int store(List<int> typedArray, int index, int value);
-
-  @JS('sub')
-  external static int sub(List<int> typedArray, int index, int value);
-
-  @JS('wait')
-  external static String wait(List<int> typedArray, int index, int value,
-      [num timeout]);
-
-  @JS('xor')
-  external static int xor(List<int> typedArray, int index, int value);
-}
-
-@JS()
-class TypedArray {
-  external factory TypedArray();
-  external num get length;
 }
