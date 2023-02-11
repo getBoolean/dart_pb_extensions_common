@@ -26,8 +26,7 @@ void register<T extends Registerable>({
   required SourceInfo info,
   required RegisterableCreator<T> creator,
 }) {
-  // TODO: Uncomment later after testing
-  // context['self'] ??= context['window'] ??= context['global'] ??= context;
+  context['self'] ??= context['window'] ??= context['global'] ??= context;
   final sourceExtensionJsClass =
       allowInteropCaptureThis(() => creator().register());
 
