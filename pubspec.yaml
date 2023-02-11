@@ -7,7 +7,7 @@ environment:
   sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  js: ^0.6.6
+  js: ^0.6.7
   html: ^0.15.1
 
 dev_dependencies:
