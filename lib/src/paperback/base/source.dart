@@ -13,21 +13,36 @@ abstract class Source extends Registerable {
   JsObject register() {
     final source = SourceFutureToPromiseAdatper(this);
     return JsObject.jsify({
-      'getChapterDetails': allowInterop(source.getChapterDetails),
-      'getChapters': allowInterop(source.getChapters),
-      'getMangaDetails': allowInterop(source.getMangaDetails),
-      'getSearchResults': allowInterop(source.getSearchResults),
-      'filterUpdatedManga': allowInterop(source.filterUpdatedManga),
-      'getCloudflareBypassRequest': allowInterop(source.getCloudflareBypassRequest),
-      'getHomePageSections': allowInterop(source.getHomePageSections),
-      'getMangaShareUrl': allowInterop(source.getMangaShareUrl),
-      'getSearchFields': allowInterop(source.getSearchFields),
-      'getSearchTags': allowInterop(source.getSearchTags),
-      'getSourceMenu': allowInterop(source.getSourceMenu),
-      'getViewMoreItems': allowInterop(source.getViewMoreItems),
-      'getWebsiteMangaDirectory': allowInterop(source.getWebsiteMangaDirectory),
-      'supportsSearchOperators': allowInterop(source.supportsSearchOperators),
-      'supportsTagExclusion': allowInterop(source.supportsTagExclusion),
+      'getChapterDetails': allowInteropCaptureThisNamed(
+          'getChapterDetails', source.getChapterDetails),
+      'getChapters':
+          allowInteropCaptureThisNamed('getChapters', source.getChapters),
+      'getMangaDetails': allowInteropCaptureThisNamed(
+          'getMangaDetails', source.getMangaDetails),
+      'getSearchResults': allowInteropCaptureThisNamed(
+          'getSearchResults', source.getSearchResults),
+      'filterUpdatedManga': allowInteropCaptureThisNamed(
+          'filterUpdatedManga', source.filterUpdatedManga),
+      'getCloudflareBypassRequest': allowInteropCaptureThisNamed(
+          'getCloudflareBypassRequest', source.getCloudflareBypassRequest),
+      'getHomePageSections': allowInteropCaptureThisNamed(
+          'getHomePageSections', source.getHomePageSections),
+      'getMangaShareUrl': allowInteropCaptureThisNamed(
+          'getMangaShareUrl', source.getMangaShareUrl),
+      'getSearchFields': allowInteropCaptureThisNamed(
+          'getSearchFields', source.getSearchFields),
+      'getSearchTags':
+          allowInteropCaptureThisNamed('getSearchTags', source.getSearchTags),
+      'getSourceMenu':
+          allowInteropCaptureThisNamed('getSourceMenu', source.getSourceMenu),
+      'getViewMoreItems': allowInteropCaptureThisNamed(
+          'getViewMoreItems', source.getViewMoreItems),
+      'getWebsiteMangaDirectory': allowInteropCaptureThisNamed(
+          'getWebsiteMangaDirectory', source.getWebsiteMangaDirectory),
+      'supportsSearchOperators': allowInteropCaptureThisNamed(
+          'supportsSearchOperators', source.supportsSearchOperators),
+      'supportsTagExclusion': allowInteropCaptureThisNamed(
+          'supportsTagExclusion', source.supportsTagExclusion),
     });
   }
 
@@ -78,7 +93,9 @@ abstract class Source extends Registerable {
   /// - [time]: This function should find all manga which has been updated between the current time, and this parameter's reported time.
   ///           After this time has been passed, the system should stop parsing and return
   Future<void> filterUpdatedMangas(
-          void Function(MangaUpdates updates) mangaUpdatesFoundCallback, Date time, List<String> ids) =>
+          void Function(MangaUpdates updates) mangaUpdatesFoundCallback,
+          Date time,
+          List<String> ids) =>
       Future.value();
 
   /// (OPTIONAL METHOD) A function which should readonly all of the available homepage sections for a given source, and return a [HomeSection] object.
@@ -89,7 +106,8 @@ abstract class Source extends Registerable {
   ///
   /// Arguments:
   /// - [sectionCallback]: A callback which is run for each independant [HomeSection].
-  Future<void> getHomePageSections(void Function(HomeSection section) sectionCallback) =>
+  Future<void> getHomePageSections(
+          void Function(HomeSection section) sectionCallback) =>
       Future.value();
 
   /// If a source is secured by Cloudflare, this method should be filled out.
@@ -126,7 +144,9 @@ abstract class Source extends Registerable {
   /// function. It initially starts out as null. Afterwards, if the metadata value returned in the [PagedResults] has been modified,
   /// the modified version will be supplied to this function instead of the origional [JsSource.getHomePageSections]'s version.
   /// This is useful for keeping track of which page a user is on, pagnating to other pages as ViewMore is called multiple times.
-  Future<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata) => null;
+  Future<PagedResults>? getViewMoreItems(
+          String homepageSectionId, Object? metadata) =>
+      null;
 
   /// (OPTIONAL METHOD) This function is to return the entire library of a manga website, page by page.
   /// If there is an additional page which needs to be called, the [PagedResults] value should have it's metadata filled out
@@ -151,44 +171,55 @@ class SourceFutureToPromiseAdatper implements JsSource {
 
   @override
   Promise<void>? filterUpdatedManga(
-          void Function(MangaUpdates updates) mangaUpdatesFoundCallback, Date time, List<String> ids) =>
-      source.filterUpdatedMangas(mangaUpdatesFoundCallback, time, ids).toPromise();
+          void Function(MangaUpdates updates) mangaUpdatesFoundCallback,
+          Date time,
+          List<String> ids) =>
+      source
+          .filterUpdatedMangas(mangaUpdatesFoundCallback, time, ids)
+          .toPromise();
 
   @override
   Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId) =>
       source.getChapterDetails(mangaId, chapterId).toPromise();
 
   @override
-  Promise<List<Chapter>> getChapters(String mangaId) => source.getChapters(mangaId).toPromise();
+  Promise<List<Chapter>> getChapters(String mangaId) =>
+      source.getChapters(mangaId).toPromise();
 
   @override
   Request? getCloudflareBypassRequest() => source.getCloudflareBypassRequest();
 
   @override
-  Promise<void>? getHomePageSections(void Function(HomeSection section) sectionCallback) =>
+  Promise<void>? getHomePageSections(
+          void Function(HomeSection section) sectionCallback) =>
       source.getHomePageSections(sectionCallback).toPromise();
 
   @override
-  Promise<MangaInfo> getMangaDetails(String mangaId) => source.getMangaDetails(mangaId).toPromise();
+  Promise<MangaInfo> getMangaDetails(String mangaId) =>
+      source.getMangaDetails(mangaId).toPromise();
 
   @override
   String? getMangaShareUrl(String mangaId) => source.getMangaShareUrl(mangaId);
 
   @override
-  Promise<List<SearchField>>? getSearchFields() => source.getSearchFields()?.toPromise();
+  Promise<List<SearchField>>? getSearchFields() =>
+      source.getSearchFields()?.toPromise();
 
   @override
-  Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata) =>
+  Promise<PagedResults> getSearchResults(
+          SearchRequest query, Object? metadata) =>
       source.getSearchResults(query, metadata).toPromise();
 
   @override
-  Promise<List<TagSection>>? getSearchTags() => source.getSearchTags()?.toPromise();
+  Promise<List<TagSection>>? getSearchTags() =>
+      source.getSearchTags()?.toPromise();
 
   @override
   Promise<Section>? getSourceMenu() => source.getSourceMenu()?.toPromise();
 
   @override
-  Promise<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata) =>
+  Promise<PagedResults>? getViewMoreItems(
+          String homepageSectionId, Object? metadata) =>
       source.getViewMoreItems(homepageSectionId, metadata)?.toPromise();
 
   @override
@@ -199,10 +230,12 @@ class SourceFutureToPromiseAdatper implements JsSource {
   JsRequestManager get requestManager => source.requestManager.jsRequestManager;
 
   @override
-  Promise<bool>? supportsSearchOperators() => source.supportsSearchOperators()?.toPromise();
+  Promise<bool>? supportsSearchOperators() =>
+      source.supportsSearchOperators()?.toPromise();
 
   @override
-  Promise<bool>? supportsTagExclusion() => source.supportsTagExclusion()?.toPromise();
+  Promise<bool>? supportsTagExclusion() =>
+      source.supportsTagExclusion()?.toPromise();
 }
 
 @JS('Source')
@@ -232,7 +265,8 @@ abstract class JsSource implements Requestable, Searchable {
   /// Arguments:
   /// - [mangaId]: The ID which this function is expected to grab data for
   @JS()
-  external Promise<ChapterDetails> getChapterDetails(String mangaId, String chapterId);
+  external Promise<ChapterDetails> getChapterDetails(
+      String mangaId, String chapterId);
 
   /// Given a search request, this function should scan through the website's search page and
   /// return relevent [MangaTile] objects to the given search parameters.
@@ -245,7 +279,8 @@ abstract class JsSource implements Requestable, Searchable {
   /// - [metadata]: A persistant metadata parameter which can be filled out with any data required between search page sections
   @override
   @JS()
-  external Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
+  external Promise<PagedResults> getSearchResults(
+      SearchRequest query, Object? metadata);
 
   // <-----------        OPTIONAL METHODS        -----------> //
 
@@ -316,7 +351,8 @@ abstract class JsSource implements Requestable, Searchable {
   /// Arguments:
   /// - [sectionCallback]: A callback which is run for each independant [HomeSection].
   @JS()
-  external Promise<void>? getHomePageSections(void Function(HomeSection section) sectionCallback);
+  external Promise<void>? getHomePageSections(
+      void Function(HomeSection section) sectionCallback);
 
   /// (OPTIONAL METHOD) This function will take a given homepageSectionId and metadata value, and with this information, should return
   /// all of the manga tiles supplied for the given state of parameters. Most commonly, the metadata value will contain some sort of page information,
@@ -329,7 +365,8 @@ abstract class JsSource implements Requestable, Searchable {
   /// the modified version will be supplied to this function instead of the origional [JsSource.getHomePageSections]'s version.
   /// This is useful for keeping track of which page a user is on, pagnating to other pages as ViewMore is called multiple times.
   @JS()
-  external Promise<PagedResults>? getViewMoreItems(String homepageSectionId, Object? metadata);
+  external Promise<PagedResults>? getViewMoreItems(
+      String homepageSectionId, Object? metadata);
 
   /// (OPTIONAL METHOD) This function is to return the entire library of a manga website, page by page.
   /// If there is an additional page which needs to be called, the [PagedResults] value should have it's metadata filled out

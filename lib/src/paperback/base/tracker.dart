@@ -26,15 +26,26 @@ abstract class Tracker extends Registerable {
   JsObject register() {
     final tracker = TrackerFutureToPromiseAdapter(this);
     return JsObject.jsify({
-      'getSearchResults': allowInterop(tracker.getSearchResults),
-      'getMangaForm': allowInterop(tracker.getMangaForm),
-      'getTrackedManga': allowInterop(tracker.getTrackedManga),
-      'getSourceMenu': allowInterop(tracker.getSourceMenu),
-      'processActionQueue': allowInterop(tracker.processActionQueue),
-      'getSearchFields': allowInterop(tracker.getSearchFields),
-      'getSearchTags': allowInterop(tracker.getSearchTags),
-      'supportsSearchOperators': allowInterop(tracker.supportsSearchOperators),
-      'supportsTagExclusion': allowInterop(tracker.supportsTagExclusion),
+      'getSearchResults': allowInteropCaptureThisNamed(
+        'getSearchResults',
+        tracker.getSearchResults,
+      ),
+      'getMangaForm':
+          allowInteropCaptureThisNamed('getMangaForm', tracker.getMangaForm),
+      'getTrackedManga': allowInteropCaptureThisNamed(
+          'getTrackedManga', tracker.getTrackedManga),
+      'getSourceMenu':
+          allowInteropCaptureThisNamed('getSourceMenu', tracker.getSourceMenu),
+      'processActionQueue': allowInteropCaptureThisNamed(
+          'processActionQueue', tracker.processActionQueue),
+      'getSearchFields': allowInteropCaptureThisNamed(
+          'getSearchFields', tracker.getSearchFields),
+      'getSearchTags':
+          allowInteropCaptureThisNamed('getSearchTags', tracker.getSearchTags),
+      'supportsSearchOperators': allowInteropCaptureThisNamed(
+          'supportsSearchOperators', tracker.supportsSearchOperators),
+      'supportsTagExclusion': allowInteropCaptureThisNamed(
+          'supportsTagExclusion', tracker.supportsTagExclusion),
     });
   }
 
@@ -70,14 +81,17 @@ class TrackerFutureToPromiseAdapter implements JsTracker {
   TrackerFutureToPromiseAdapter(this.tracker);
 
   @override
-  JsRequestManager get requestManager => tracker.requestManager.jsRequestManager;
+  JsRequestManager get requestManager =>
+      tracker.requestManager.jsRequestManager;
 
   @override
-  Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata) =>
+  Promise<PagedResults> getSearchResults(
+          SearchRequest query, Object? metadata) =>
       Promise.of(tracker.getSearchResults(query, metadata));
 
   @override
-  Promise<Form> getMangaForm(String mangaId) => Promise.of(tracker.getMangaForm(mangaId));
+  Promise<Form> getMangaForm(String mangaId) =>
+      Promise.of(tracker.getMangaForm(mangaId));
 
   @override
   Promise<TrackedManga> getTrackedManga(String mangaId) =>
@@ -91,16 +105,20 @@ class TrackerFutureToPromiseAdapter implements JsTracker {
       Promise.of(tracker.processActionQueue(TrackerActionQueue(actionQueue)));
 
   @override
-  Promise<List<SearchField>>? getSearchFields() => tracker.getSearchFields()?.toPromise();
+  Promise<List<SearchField>>? getSearchFields() =>
+      tracker.getSearchFields()?.toPromise();
 
   @override
-  Promise<List<TagSection>>? getSearchTags() => tracker.getSearchTags()?.toPromise();
+  Promise<List<TagSection>>? getSearchTags() =>
+      tracker.getSearchTags()?.toPromise();
 
   @override
-  Promise<bool>? supportsSearchOperators() => tracker.supportsSearchOperators()?.toPromise();
+  Promise<bool>? supportsSearchOperators() =>
+      tracker.supportsSearchOperators()?.toPromise();
 
   @override
-  Promise<bool>? supportsTagExclusion() => tracker.supportsTagExclusion()?.toPromise();
+  Promise<bool>? supportsTagExclusion() =>
+      tracker.supportsTagExclusion()?.toPromise();
 }
 
 @JS('Tracker')
@@ -112,7 +130,8 @@ abstract class JsTracker implements Requestable, Searchable {
 
   @override
   @JS()
-  external Promise<PagedResults> getSearchResults(SearchRequest query, Object? metadata);
+  external Promise<PagedResults> getSearchResults(
+      SearchRequest query, Object? metadata);
 
   /// This cannot be async since the app expects a form as soon as this function is called
   /// for async tasks handle them in `sections`.

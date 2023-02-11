@@ -1,9 +1,9 @@
 import 'dart:js' show JsObject, context;
 
+import 'package:dart_pb_extensions_common/js.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/registerable.dart';
 import 'package:dart_pb_extensions_common/src/paperback/base/source.dart';
 import 'package:dart_pb_extensions_common/src/paperback/models/source_info.dart';
-import 'package:js/js.dart';
 
 const kCliPrefix = '\$SourceId\$';
 
@@ -26,7 +26,8 @@ void register<T extends Registerable>({
   required SourceInfo info,
   required RegisterableCreator<T> creator,
 }) {
-  final sourceExtensionJsClass = allowInterop(() => creator().register());
+  final sourceExtensionJsClass =
+      allowInteropCaptureThis(() => creator().register());
 
   context['Sources.$kCliPrefix'] = id;
   context['Sources.${id}Info'] = JsObject.jsify(info.toMap());
