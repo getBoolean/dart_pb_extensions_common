@@ -26,10 +26,16 @@ void register<T extends Registerable>({
   required SourceInfo info,
   required RegisterableCreator<T> creator,
 }) {
+  // TODO: Uncomment later after testing
+  // context['self'] ??= context['window'] ??= context['global'] ??= context;
   final sourceExtensionJsClass =
       allowInteropCaptureThis(() => creator().register());
 
-  context['Sources.$kCliPrefix'] = id;
-  context['Sources.${id}Info'] = JsObject.jsify(info.toMap());
-  context['Sources.$id'] = sourceExtensionJsClass;
+  final sourcesObj = JsObject.jsify({
+    kCliPrefix: id,
+    '${id}Info': JsObject.jsify(info.toMap()),
+    id: sourceExtensionJsClass,
+  });
+
+  context['Sources'] = sourcesObj;
 }
